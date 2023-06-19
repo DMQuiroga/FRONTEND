@@ -4,7 +4,7 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
-import Index from './pages/index/Index';
+import Index from './layout/Index';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 

@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+import { useUser } from '../context/UserContext';
 import './Index.css';
-import { useAuthentication } from '../../hooks/authApi';
+import { useAuthentication } from '../hooks/authApi';
 
 function Index() {
   const [user] = useUser();
