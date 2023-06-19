@@ -1,0 +1,35 @@
+#signup {
+  border: 1px solid #ccc;
+  display: block;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#signup label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#signup label span {
+  display: inline-block;
+  text-align: left;
+  width: 100px;
+}
+
+#signup label input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#signup p {
+  margin-top: 20px;
+  color: #888;
+}
+
+#signup p a {
+  color: #77f;
+  margin-left: 5px;
+  text-decoration: none;
+}
