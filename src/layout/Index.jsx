@@ -1,13 +1,9 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import './Index.css';
+import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
-
 import SearchBar from '../components/SearchBar/SearchBar';
-import AboutUs from '../pages/aboutUs/AboutUs';
-import Acordeon from '../components/Acordeon';
-import Contact from '../pages/contact/Contact';
-import TerminosCondiciones from '../pages/TerminosCondiciones/TerminosCondiciones';
 
 function Index() {
   const [user] = useUser();
@@ -39,31 +35,7 @@ function Index() {
       <main className="content">
         <Outlet />
       </main>
-      <footer>
-        <section className="content-footer">
-          <p>
-            <Acordeon title="About us">
-              <AboutUs />
-            </Acordeon>
-          </p>
-
-          <p>
-            <Acordeon title="Contact">
-              <Contact />
-            </Acordeon>
-          </p>
-
-          <p>
-            <Acordeon title="Terminos y condiciones">
-              <TerminosCondiciones />
-            </Acordeon>
-          </p>
-
-          <p>
-            <Link to="/">HB News Favicon</Link>
-          </p>
-        </section>
-      </footer>
+      <Footer />
     </>
   );
 }

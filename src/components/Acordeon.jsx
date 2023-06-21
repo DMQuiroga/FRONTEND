@@ -1,15 +1,22 @@
-import { useState } from 'react';
 import './Acordeon.css';
 
-function Acordeon({ title, children, current }) {
-  const [show, setShow] = useState(false);
-
+function Acordeon({ content }) {
   return (
-    <div className={`acordeon ${show ? 'show' : 'hide'}`}>
-      <button onClick={() => setShow(!show)}>
-        {title} ({current})
-      </button>
-      {show && <div className="acordeon-body">{children}</div>}
+    <div className={`acordeon ${content ? 'show' : 'hide'}`}>
+      {content && (
+        <div className="acordeon-body">
+          <p>{content.pre}</p>
+
+          {content.sections.map((section, i) => (
+            <div key={i}>
+              <h3>{section.title}</h3>
+              <p>{section.text}</p>
+            </div>
+          ))}
+
+          <p>{content.post}</p>
+        </div>
+      )}
     </div>
   );
 }
