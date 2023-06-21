@@ -21,7 +21,7 @@ function Home() {
       {/* {news?.map((n) => (
         <div key={n.id}>n.title</div>
       ))} */}
-      {JSON.stringify(news)}
+      {/* {JSON.stringify(news)} */}
     </section>
   );
 }
