@@ -1,6 +1,7 @@
 header {
   background-color: rgb(67, 37, 12);
   color: white;
+  border-bottom: 1px solid grey;
 }
 
 header .content {
@@ -40,6 +41,61 @@ footer .content-footer {
 
 footer section p {
   margin-right: 15px;
-  font-weight: bold;
-  text-transform: uppercase;
+  white-space: pre-line;
+  vertical-align: bottom;
+}
+
+footer button {
+  background-color: rgb(116, 65, 23);
+  padding: 5px;
+  padding-right: 15px;
+  color: white;
+
+  -webkit-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+
+  border-radius: 0px 0px 124px 0px;
+  -moz-border-radius: 0px 0px 124px 0px;
+  -webkit-border-radius: 0px 0px 124px 0px;
+  border: 0px solid #000000;
+}
+
+footer button:hover {
+  background-color: rgb(141, 78, 27);
+
+  animation: vibrateAnimation 0.5s ease 0s 1 normal forwards;
+}
+
+footer button:active {
+  background-color: rgb(95, 53, 19);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@keyframes vibrateAnimation {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }

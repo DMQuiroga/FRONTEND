@@ -10,10 +10,9 @@ function Home() {
   const [news, setNews] = useState('');
 
   try {
-    loadTodayNews(setNews);
+    //loadTodayNews(setNews);
   } catch (error) {
     alert(error);
-    setNews();
   }
 
   return (
