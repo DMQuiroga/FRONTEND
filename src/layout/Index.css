@@ -25,3 +25,21 @@ header span {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+footer {
+  background-color: rgb(67, 37, 12);
+  color: white;
+}
+
+footer .content-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+footer section p {
+  margin-right: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
