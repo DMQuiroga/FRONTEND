@@ -12,7 +12,6 @@ function Signup() {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
-  const [biography, setBiography] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [terms, setTerms] = useState(false);
@@ -86,14 +85,6 @@ function Signup() {
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
           required
-        />
-      </label>
-
-      <label>
-        <span>Biografía:</span>
-        <textarea
-          value={biography}
-          onChange={(e) => setBiography(e.target.value)}
         />
       </label>
 
