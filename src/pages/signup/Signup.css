@@ -16,6 +16,11 @@
   text-align: left;
   width: 100px;
 }
+#signup label textarea {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 #signup label input {
   padding: 5px 10px;
