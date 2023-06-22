@@ -1,6 +1,6 @@
 {
   "pre": "¡Bienvenido a los Términos y Condiciones de HB News!\n\nAl utilizar nuestra plataforma y acceder a nuestros servicios, aceptas cumplir con los siguientes términos y condiciones: ",
-  "post": "Es tu responsabilidad revisar periódicamente esta página para estar al tanto de cualquier actualización.\nAl utilizar HB News, aceptas cumplir con estos Términos y Condiciones./nSi no estás de acuerdo con alguno de estos términos, te recomendamos no utilizar nuestro sitio web./nSi tienes alguna pregunta o inquietud, no dudes en contactarnos.\n¡Gracias por ser parte de la comunidad de HB News y disfrutar de nuestras noticias de calidad!",
+  "post": "Al utilizar HB News, aceptas cumplir con estos Términos y Condiciones.\nSi no estás de acuerdo con alguno de estos términos, te recomendamos no utilizar nuestro sitio web.\n\n¡Gracias por ser parte de la comunidad de HB News y disfrutar de nuestras noticias de calidad!",
 
   "sections": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "title": "3. Propiedad Intelectual",
-      "text": "Todo el contenido presente en HB News, incluyendo artículos, imágenes, logotipos está protegido por derechos de propiedad intelectual.\nNo está permitido copiar, distribuir, reproducir o utilizar dicho contenido sin nuestro consentimiento expreso."
+      "text": "Todo el contenido presente en HB News, incluyendo artículos, imágenes, logotipos están protegidos por derechos de propiedad intelectual.\nNo está permitido copiar, distribuir, reproducir o utilizar dicho contenido sin nuestro consentimiento expreso."
     },
     {
       "title": "4. Enlaces Externos",
@@ -29,7 +29,7 @@
     },
     {
       "title": "7. Modificaciones",
-      "text": "Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento sin previo aviso."
+      "text": "Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento sin previo aviso.\nEs tu responsabilidad revisar periódicamente esta página para estar al tanto de cualquier actualización."
     }
   ]
 }
