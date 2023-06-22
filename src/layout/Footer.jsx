@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Index.css';
 import Acordeon from '../components/Acordeon';
