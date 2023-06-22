@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
 #login {
   border: 1px solid #ccc;
   display: block;
@@ -32,4 +38,20 @@
   color: #77f;
   margin-left: 5px;
   text-decoration: none;
+}
+
+ul {
+  margin: 10px 0px;
+}
+
+li {
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto 5px 10px;
+  /*  display: grid;
+  grid-template-columns: 1fr 1fr; */
+}
+
+p {
 }
