@@ -35,7 +35,6 @@ function Footer() {
             <button onClick={() => openAcordeon('t-and-c', terms)}>
               T&C 🛡️
             </button>
-            <Link to="/">-___🟣___-</Link>
           </>
         ) : (
           <button type="button" onClick={() => setAcordeonContent(null)}>
