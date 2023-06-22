@@ -12,10 +12,19 @@ function Signup() {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
+  const [biography, setBiography] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [terms, setTerms] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== password2) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
     try {
       await signup(name, surname, email, password);
       alert('Usuario registrado correctamente');
@@ -68,9 +77,38 @@ function Signup() {
           required
         />
       </label>
+
+      <label>
+        <span>= Contraseña:</span>
+        <input
+          name="password-repeat"
+          type="password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        <span>Biografía:</span>
+        <textarea
+          value={biography}
+          onChange={(e) => setBiography(e.target.value)}
+        />
+      </label>
+
+      <label>
+        <input
+          checked={terms}
+          onChange={(e) => setTerms(e.target.checked)}
+          type="checkbox"
+          required
+        />
+        Acepto los términos y condiciones
+      </label>
       <button>Registro</button>
       <p>
-        Ya estás registrado?
+        ¿Ya estás registrado?
         <Link to="/login">Inicia sesión</Link>
       </p>
     </form>
