@@ -13,3 +13,5 @@ export function useNews() {
 
   return { loadTodayNews };
 }
+
+export default useNews;
