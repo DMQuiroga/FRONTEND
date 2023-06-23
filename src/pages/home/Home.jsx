@@ -2,7 +2,6 @@
 //import { useUser } from '../../context/UserContext';
 import { useState } from 'react';
 import { useNews } from '../../hooks/newsApi';
-import './Home.css';
 
 function Home() {
   const { loadTodayNews } = useNews();
