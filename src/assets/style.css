@@ -1,11 +1,18 @@
 html,
 body,
 #root {
+  font-family: 'Barlow Semi Condensed', Times New Roman, Times, serif,
+    sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
   padding: 0;
 }
+
+body {
+  background-size: cover;
+}
+
 #root {
   min-height: 100%;
   display: flex;
