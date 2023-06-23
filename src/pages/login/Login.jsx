@@ -49,6 +49,15 @@ function Login() {
         Todavía no tienes cuenta?
         <Link to="/signup">Regístrate</Link>
       </p>
+
+      <div className="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </form>
   );
 }
