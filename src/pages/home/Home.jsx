@@ -20,13 +20,14 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showCategories, setShowCategories] = useState(false);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        let url = BACKEND_URL + '/today-news';
-        if (selectedCategory) {
-          url = `${BACKEND_URL}/today-news/${selectedCategory}`;
-        }
+  const [news, setNews] = useState('');
+
+  try {
+    loadTodayNews(setNews);
+  } catch (error) {
+    alert(error);
+    setNews();
+  }
 
         const response = await fetch(url);
         const data = await response.json();
@@ -53,36 +54,12 @@ function Home() {
   };
 
   return (
-    <>
-      <div className="category-dropdown">
-        <button onClick={toggleCategories}>Categorías</button>
-        {showCategories && (
-          <div className="category-menu">
-            {categories.map((category, index) => (
-              <button key={index} onClick={() => selectCategory(index + 1)}>
-                {category}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {news.length === 0 ? (
-        <p>No se encontraron noticias.</p>
-      ) : (
-        <ul>
-          {news.map((n, index) => (
-            <li className="newscard" key={index}>
-              <h2>{n.title}</h2>
-              <p>{n.text}</p>
-              <img src={n.imagenUrl} alt={n.title} />
-              <div className="score">{n.score} </div>
-              <p>{n.publishDate} </p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+    <section>
+      {/* {news?.map((n) => (
+        <div key={n.id}>n.title</div>
+      ))} */}
+      {JSON.stringify(news)}
+    </section>
   );
 }
 

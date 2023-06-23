@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import './Index.css';
+import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
 
 function Index() {
@@ -32,6 +33,7 @@ function Index() {
       <main className="content">
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }

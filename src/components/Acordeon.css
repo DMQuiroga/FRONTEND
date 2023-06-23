@@ -1,0 +1,7 @@
+.acordeon .acordeon-body {
+  display: none;
+}
+
+.acordeon.show .acordeon-body {
+  display: block;
+}
