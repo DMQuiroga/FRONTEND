@@ -3,6 +3,7 @@ import { useUser } from '../context/UserContext';
 import './Index.css';
 import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
+import Toggle from './Toggle';
 
 function Index() {
   const [user] = useUser();
@@ -23,10 +24,15 @@ function Index() {
               </a>
             </p>
           ) : (
-            <p>
-              <Link to="/login">Iniciar sesión</Link> |{' '}
-              <Link to="/signup">Registrarse</Link>
-            </p>
+            <>
+              <p>
+                <Link to="/login">Iniciar sesión</Link> |{' '}
+                <Link to="/signup">Registrarse</Link>
+              </p>
+              <span>
+                <Toggle />
+              </span>
+            </>
           )}
         </div>
       </header>
