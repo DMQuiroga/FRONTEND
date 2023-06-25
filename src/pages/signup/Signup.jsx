@@ -13,9 +13,17 @@ function Signup() {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [terms, setTerms] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== password2) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
     try {
       await signup(name, surname, email, password);
       alert('Usuario registrado correctamente');
@@ -68,11 +76,42 @@ function Signup() {
           required
         />
       </label>
+
+      <label>
+        <span>= Contraseña:</span>
+        <input
+          name="password-repeat"
+          type="password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        <input
+          checked={terms}
+          onChange={(e) => setTerms(e.target.checked)}
+          type="checkbox"
+          required
+        />
+        Acepto los términos y condiciones
+      </label>
       <button>Registro</button>
+
       <p>
-        Ya estás registrado?
+        ¿Ya estás registrado?
         <Link to="/login">Inicia sesión</Link>
       </p>
+      <div className="pyramid-loader">
+        <div className="wrapper">
+          <span className="side side1"></span>
+          <span className="side side2"></span>
+          <span className="side side3"></span>
+          <span className="side side4"></span>
+          <span className="shadow"></span>
+        </div>
+      </div>
     </form>
   );
 }
