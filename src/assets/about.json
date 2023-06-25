@@ -1,27 +1,27 @@
 {
-  "pre": "¡Bienvenido a nuestra comunidad de noticias!\n\n\n    En HB News, creemos en el poder de la información y en la importancia de\n    compartir diferentes perspectivas.",
-  "post": "Gracias por confiar en HB News como tu fuente confiable de noticias.\n\n\n    Te invitamos a unirte a nuestra comunidad.\n    \n    Explora, comparte, valora y descubre el poder de la información.\n    \n    \n    Esperamos que disfrutes de tu experiencia.\n    \n    \n    Atentamente,\n    \n    HB News",
+  "pre": "¡Bienvenido a nuestra comunidad de noticias!\n\nEn HB News, creemos en el poder de la información y en la importancia de compartir diferentes perspectivas.",
+  "post": "\nGracias por confiar en HB News como tu fuente confiable de noticias.\nTe invitamos a unirte a nuestra comunidad.\nExplora, comparte, valora y descubre el poder de la información.\n\n\nEsperamos que disfrutes de tu experiencia.\nAtentamente,\nHB News",
 
   "sections": [
     {
       "title": "¿Qué es HB News?",
-      "text": "Somos una web de noticias dedicada a ofrecer un espacio abierto y\ncolaborativo."
+      "text": "Somos una web de noticias dedicada a ofrecer un espacio abierto y colaborativo."
     },
     {
       "title": "¿Qué te ofrecemos?",
-      "text": "\nNuestra plataforma ofrece una amplia variedad de noticias.\n\nTe invitamos a explorar según tus intereses.\n\nGracias a nuestros filtros personalizados podrás sumérgite en los temas\nque más te interesan y descubrir una amplia variedad de perspectivas\ninformativas.\n\nAdemás de leer las noticias, queremos darle voz a nuestra comunidad.\n\n¡Tú eres nuestro periodista!"
+      "text": "Nuestra plataforma ofrece una amplia variedad de noticias.\nTe invitamos a explorar según tus intereses.\nAdemás de leer las noticias, queremos darle voz a nuestra comunidad.\n¡Tú eres nuestro periodista!"
     },
     {
-      "title": "¿Eres reportero estrella?",
-      "text": "Si, El protagonista de nuestra comunidad eres tú.\n\nTe brindamos la oportunidad de ser el creador de noticias.\n\nComparte tus propias historias e ideas con otros apasionados como tú.\n\n¡Conviértete en la voz que impulsa el cambio!\n\nEn HB News, valoramos la diversidad de opiniones y promovemos un ambiente\nrespetuoso.\n\n¡Tu voz importa!"
+      "title": "¿Eres reportero/a estrella?",
+      "text": "Si, el protagonista de nuestra comunidad eres tú.\nTe brindamos la oportunidad de ser el creador de noticias.\nComparte tus propias historias e ideas con otros apasionados como tú.\n¡Conviértete en la voz que impulsa el cambio!\nEn HB News, valoramos la diversidad de opiniones y promovemos un ambiente respetuoso.\n¡Tu voz importa!"
     },
     {
       "title": "Objetivo",
-      "text": "Mantenerte informado y brindarte una perspectiva de los eventos que están\ndando forma a nuestro mundo."
+      "text": "Mantenerte informado y brindarte una perspectiva de los eventos que están dando forma a nuestro mundo."
     },
     {
       "title": "Calidad y Veracidad",
-      "text": "Nos esforzamos por mantener altos estándares de calidad y veracidad en las\nnoticias que compartimos.\n\nTrabajamos diligentemente para garantizar los criterios de verificación y\nobjetividad de nuestro contenido."
+      "text": "Nos esforzamos por mantener altos estándares de calidad y veracidad en las noticias que compartimos.\nTrabajamos diligentemente para garantizar los criterios de verificación y objetividad de nuestro contenido."
     }
   ]
 }

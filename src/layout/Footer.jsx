@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Index.css';
 import Acordeon from '../components/Acordeon';
@@ -27,17 +26,18 @@ function Footer() {
         {!acordeonContent ? (
           <>
             <button onClick={() => openAcordeon('about-us', about)}>
-              About us
+              About us 🌐
             </button>
             <button onClick={() => openAcordeon('contact', contact)}>
-              Contact
+              Contact 📞
             </button>
-            <button onClick={() => openAcordeon('t-and-c', terms)}>T&C</button>
-            <Link to="/">HB News Favicon</Link>
+            <button onClick={() => openAcordeon('t-and-c', terms)}>
+              T&C 🛡️
+            </button>
           </>
         ) : (
           <button type="button" onClick={() => setAcordeonContent(null)}>
-            CERRAR
+            CERRAR ❌
           </button>
         )}
       </section>

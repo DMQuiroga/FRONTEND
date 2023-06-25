@@ -1,7 +1,7 @@
 header {
-  background-color: rgb(67, 37, 12);
+  background-color: #0f1111;
   color: white;
-  border-bottom: 1px solid grey;
+  border-bottom: 2px solid rgb(5, 57, 87);
 }
 
 header .content {
@@ -28,7 +28,7 @@ header span {
 }
 
 footer {
-  background-color: rgb(67, 37, 12);
+  background-color: #0f1111;
   color: white;
 }
 
@@ -46,9 +46,10 @@ footer section p {
 }
 
 footer button {
-  background-color: rgb(116, 65, 23);
+  background-color: #3f026b;
   padding: 5px;
-  padding-right: 15px;
+  padding-right: 20px;
+  padding-left: 10px;
   color: white;
 
   -webkit-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
@@ -62,8 +63,7 @@ footer button {
 }
 
 footer button:hover {
-  background-color: rgb(141, 78, 27);
-
+  background-color: rgb(51, 33, 153);
   animation: vibrateAnimation 0.5s ease 0s 1 normal forwards;
 }
 
