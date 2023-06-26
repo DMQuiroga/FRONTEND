@@ -1,4 +1,4 @@
-import TodayNews from '../../components/TodayNews/TodayNews';
+import TodayNews from '../../components/todayNews/TodayNews';
 
 function Home() {
   return (
