@@ -8,6 +8,7 @@ import Index from './layout/Index';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
+import UserForm from './layout/AvatarButton/UserForm';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
+      <Route path="userinfo" element={<UserForm />} />
     </Route>
   )
 );

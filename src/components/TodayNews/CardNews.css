@@ -36,7 +36,7 @@ ul {
   font-size: 0.7em;
 }
 
-img {
+img.image {
   border-radius: 10px;
   width: 250px;
   height: 250px;
