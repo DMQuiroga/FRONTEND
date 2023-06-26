@@ -1,5 +1,6 @@
 import TodayNews from '../../components/TodayNews/TodayNews';
-import './Home.css';
+
+//import './Home.css';
 
 function Home() {
   return (

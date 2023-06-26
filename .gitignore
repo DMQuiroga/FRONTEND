@@ -1,5 +1,5 @@
 # Ficheros de entorno
-.env*
+.env
 
 # Logs
 logs

@@ -1,15 +1,29 @@
-//import { useUser } from '../context/UserContext';
-// import useAuthHttpCall from './useAuthHttpCall';
+import { useEffect, useState } from 'react';
 
-// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-// export function useNews() {
-//   const { get } = useAuthHttpCall();
+export function useNews() {
+  const [news, setNews] = useState([]);
 
-//   const loadTodayNews = (callback) => {
-//     console.log('API CALL');
-//     get(BACKEND_URL + '/today-news').then((response) => callback(response));
-//   };
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch(BACKEND_URL + '/today-news');
+        const data = await response.json();
+        if (data.status === 'ok') {
+          setNews(data.data);
+        } else {
+          console.error('Error al obtener las noticias:', data.message);
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    };
 
-//   return { loadTodayNews };
-// }
+    fetchNews();
+  }, []);
+
+  return news;
+}
+
+export default useNews;
