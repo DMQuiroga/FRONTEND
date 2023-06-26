@@ -1,0 +1,44 @@
+ul {
+  margin: 10px 0px;
+}
+
+.newscard {
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  border: 1px solid black;
+}
+
+.newstitle {
+  margin-bottom: 10px;
+}
+
+.introtext {
+  margin-bottom: 50px;
+}
+
+.text {
+  padding: 10px 0;
+}
+
+.scorer {
+  margin: 5px 0;
+}
+
+.date {
+  margin: 5px 0;
+  font-size: 0.7em;
+}
+
+img {
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
