@@ -4,6 +4,7 @@ import './Index.css';
 import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
 import Toggle from './Toggle';
+import AvatarButton from './AvatarButton/AvatarButton';
 
 function Index() {
   const [user] = useUser();
@@ -35,6 +36,8 @@ function Index() {
             </>
           )}
         </div>
+
+        <AvatarButton />
       </header>
       <main className="content">
         <Outlet />
