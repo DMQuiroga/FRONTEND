@@ -1,0 +1,35 @@
+#login {
+  border: 1px solid #ccc;
+  display: block;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#login label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#login label span {
+  display: inline-block;
+  text-align: left;
+  width: 100px;
+}
+
+#login label input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#login p {
+  margin-top: 20px;
+  color: #888;
+}
+
+#login p a {
+  color: #77f;
+  margin-left: 5px;
+  text-decoration: none;
+}
