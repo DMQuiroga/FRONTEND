@@ -1,28 +1,39 @@
 import useNews from '../../hooks/newsApi';
 import './CardNews.css';
 import Scorer from '../Scorer';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 function CardNews() {
   const news = useNews();
   return (
     <>
       {news.length === 0 ? (
-        <p>No se encontraron noticias.</p>
+        <p>No se encontraron noticias</p>
       ) : (
         <ul>
-          {news.map((n, index) => (
-            <li className="newscard" key={index}>
-              <h2 className="newstitle">{n.title}</h2>
-              <p className="introtext">{n.introText} </p>
-              <p className="text">{n.text}</p>
-              <img className="image" src={n.imagenUrl} alt="" />
+          {news.map((noticia) => (
+            <li className="newscard" key={noticia.id}>
+              <h2 className="newstitle">{noticia.title}</h2>
+              <p className="introtext">{noticia.introText} </p>
+              <p className="text">{noticia.text}</p>
+              {noticia.imagenUrl ? (
+                <img
+                  className="imagenUploads"
+                  src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
+                  alt="Imagen noticia"
+                />
+              ) : null}
+
+              {noticia.imagenUrl ? (
+                <img className="imagenUrl" src={noticia.imagenUrl} alt="" />
+              ) : null}
 
               <div className="scorer">
-                <Scorer className="score" initial={n.score} />
+                <Scorer className="score" initial={noticia.score} />
               </div>
               <p className="date">
                 Fecha de publicación:{' '}
-                {new Date(n.publishDate).toLocaleDateString('es-ES')}
+                {new Date(noticia.publishDate).toLocaleDateString('es-ES')}
               </p>
             </li>
           ))}
