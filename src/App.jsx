@@ -9,6 +9,7 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import UserForm from './layout/AvatarButton/UserForm';
+import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
       <Route path="userinfo" element={<UserForm />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
 );

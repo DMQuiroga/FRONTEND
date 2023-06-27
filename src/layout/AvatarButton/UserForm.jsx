@@ -1,5 +1,6 @@
 //import { useEffect, useState } from "react";
-import "./UserForm.css";
+import { Link } from 'react-router-dom';
+import './UserForm.css';
 
 const UserForm = () => {
   /* const [userData, setUserData] = useState(null);
@@ -25,32 +26,37 @@ const UserForm = () => {
   } */
 
   return (
-    <div className="contenedor">
-      <h2>Información del Usuario</h2>
-      <form className="general">
-        <label>Nombres</label>
-        {/* <input type="text" value={userData.name} readOnly /> */}
-        <input type="text" value="Eduardo" readOnly />
+    <>
+      <div className="contenedor">
+        <h2>Información del Usuario</h2>
+        <form className="general">
+          <label>Nombres</label>
+          {/* <input type="text" value={userData.name} readOnly /> */}
+          <input type="text" value="Eduardo" readOnly />
 
-        <label>Apellidos</label>
-        {/* <input type="text" value={userData.surname} readOnly /> */}
-        <input type="text" value="Castro" readOnly />
+          <label>Apellidos</label>
+          {/* <input type="text" value={userData.surname} readOnly /> */}
+          <input type="text" value="Castro" readOnly />
 
-        <label>Correo electrónico</label>
-        {/* <input type="email" value={userData.email} readOnly /> */}
-        <input type="text" value="eduardo@eduardo.com" readOnly />
+          <label>Correo electrónico</label>
+          {/* <input type="email" value={userData.email} readOnly /> */}
+          <input type="text" value="eduardo@eduardo.com" readOnly />
 
-        <label>Biografía</label>
-        {/* <input type="date" value={userData.biography} readOnly /> */}
-        <input type="text" value="Estudio en HAB" readOnly />
+          <label>Biografía</label>
+          {/* <input type="date" value={userData.biography} readOnly /> */}
+          <input type="text" value="Estudio en HAB" readOnly />
 
-        <label>Cuenta activa desde</label>
-        {/* <input type="date" value={userData.} readOnly /> */}
-        <input type="text" value="xx/xx/xxxx" readOnly />
+          <label>Cuenta activa desde</label>
+          {/* <input type="date" value={userData.} readOnly /> */}
+          <input type="text" value="xx/xx/xxxx" readOnly />
 
-        {/* Agrega más campos de formulario según la información que desees mostrar */}
-      </form>
-    </div>
+          {/* Agrega más campos de formulario según la información que desees mostrar */}
+        </form>
+      </div>
+      <p>
+        <Link to={'/'}>Go to Home</Link>
+      </p>
+    </>
   );
 };
 
