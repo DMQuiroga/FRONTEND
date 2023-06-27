@@ -16,18 +16,15 @@ function CardNews() {
               <h2 className="newstitle">{noticia.title}</h2>
               <p className="introtext">{noticia.introText} </p>
               <p className="text">{noticia.text}</p>
-              {noticia.imagenUrl ? (
+              {noticia.imagenUrl && !noticia.imagenUrl.startsWith('http') ? (
                 <img
                   className="imagenUploads"
                   src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
                   alt="Imagen noticia"
                 />
-              ) : null}
-
-              {noticia.imagenUrl ? (
+              ) : noticia.imagenUrl && noticia.imagenUrl.startsWith('http') ? (
                 <img className="imagenUrl" src={noticia.imagenUrl} alt="" />
               ) : null}
-
               <div className="scorer">
                 <Scorer className="score" initial={noticia.score} />
               </div>
