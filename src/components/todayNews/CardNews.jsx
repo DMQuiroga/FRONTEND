@@ -14,16 +14,20 @@ function CardNews() {
           {news.map((noticia) => (
             <li className="newscard" key={noticia.id}>
               <h2 className="newstitle">{noticia.title}</h2>
-              <p className="introtext">{noticia.introText} </p>
+              <h4 className="introtext">{noticia.introText} </h4>
               <p className="text">{noticia.text}</p>
               {noticia.imagenUrl && !noticia.imagenUrl.startsWith('http') ? (
                 <img
                   className="imagen"
                   src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
-                  alt="Imagen noticia"
+                  alt={noticia.title}
                 />
               ) : noticia.imagenUrl && noticia.imagenUrl.startsWith('http') ? (
-                <img className="imagen" src={noticia.imagenUrl} alt="" />
+                <img
+                  className="imagen"
+                  src={noticia.imagenUrl}
+                  alt={noticia.title}
+                />
               ) : null}
               <div className="scorer">
                 <Scorer className="score" initial={noticia.score} />

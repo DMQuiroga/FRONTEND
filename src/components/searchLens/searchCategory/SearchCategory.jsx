@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './SearchCategory.css';
+import Scorer from '../../Scorer';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -23,7 +24,7 @@ function SearchCategory() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        let url = BACKEND_URL + '/today-news';
+        let url = BACKEND_URL;
         if (selectedCategory) {
           url = `${BACKEND_URL}/category-news/${selectedCategory}`;
         }
@@ -70,14 +71,32 @@ function SearchCategory() {
       {news.length === 0 ? (
         <p>No se encontraron noticias.</p>
       ) : (
-        <ul>
-          {news.map((n, index) => (
-            <li className="newscard" key={index}>
-              <h2>{n.title}</h2>
-              <p>{n.text}</p>
-              <img src={n.imagenUrl} alt={n.title} />
-              <div className="score">{n.score} </div>
-              <p>{n.publishDate} </p>
+        <ul className="noticia">
+          {news.map((noticia) => (
+            <li className="newscard" key={noticia.id}>
+              <h2 className="newstitle">{noticia.title}</h2>
+              <h4 className="introtext">{noticia.introText} </h4>
+              <p className="text">{noticia.text}</p>
+              {noticia.imagenUrl && !noticia.imagenUrl.startsWith('http') ? (
+                <img
+                  className="imagen"
+                  src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
+                  alt={noticia.title}
+                />
+              ) : noticia.imagenUrl && noticia.imagenUrl.startsWith('http') ? (
+                <img
+                  className="imagen"
+                  src={noticia.imagenUrl}
+                  alt={noticia.title}
+                />
+              ) : null}
+              <div className="scorer">
+                <Scorer className="score" initial={noticia.score} />
+              </div>
+              <p className="date">
+                Fecha de publicación:{' '}
+                {new Date(noticia.publishDate).toLocaleDateString('es-ES')}
+              </p>
             </li>
           ))}
         </ul>
