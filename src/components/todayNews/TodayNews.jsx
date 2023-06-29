@@ -1,5 +1,4 @@
 import useNews from '../../hooks/newsApi';
-import './TodayNews.css';
 import NewsCard from '../NewsCard';
 
 function TodayNews() {
@@ -12,7 +11,7 @@ function TodayNews() {
       ) : (
         <ul className="noticia">
           {news.map((noticia) => (
-            <li className="newscard" key={noticia.id}>
+            <li key={noticia.id}>
               <NewsCard noticia={noticia} />
             </li>
           ))}

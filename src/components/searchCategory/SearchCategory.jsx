@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import './SearchCategory.css';
-import useAuthHttpCall from '../../../hooks/useAuthHttpCall';
-import NewsCard from '../../NewsCard';
+import useAuthHttpCall from '../../hooks/useAuthHttpCall';
+import NewsCard from '../NewsCard';
 
 const categories = [
   'Actualidad',
@@ -65,7 +64,7 @@ function SearchCategory() {
       ) : (
         <ul className="noticia">
           {news.map((noticia) => (
-            <li className="newscard" key={noticia.id}>
+            <li key={noticia.id}>
               <NewsCard noticia={noticia} />
             </li>
           ))}
