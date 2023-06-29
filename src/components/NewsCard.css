@@ -1,0 +1,56 @@
+ul {
+  margin: 10px 0px;
+}
+
+.newscard {
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto 5px 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.newscard .user {
+  border: 1px solid black;
+}
+
+.newscard .newstitle {
+  margin-bottom: 10px;
+}
+
+.newscard .introtext {
+  margin-bottom: 10px;
+}
+
+.newscard .text {
+  padding: 10px 0;
+}
+
+.newscard .scorer {
+  margin: 5px 0;
+}
+
+.newscard .date {
+  margin: 5px 0;
+  font-size: 0.7em;
+}
+
+.newscard img.imagen {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.newscard .newsCard-container {
+  display: flex;
+}
+
+.newscard .newsCard-left {
+  padding: 10px;
+  max-width: 50%;
+}
+
+.newscard .newsCard-right {
+  padding: 10px;
+}

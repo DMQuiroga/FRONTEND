@@ -1,7 +1,6 @@
 import { useUser } from '../context/UserContext';
 import useAuthHttpCall from './useAuthHttpCall';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { BACKEND_URL } from '../config';
 
 export function useAuthentication() {
   const { post } = useAuthHttpCall();
