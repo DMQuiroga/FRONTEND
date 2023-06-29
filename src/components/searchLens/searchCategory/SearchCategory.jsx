@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './SearchCategory.css';
 import Scorer from '../../Scorer';
 import useAuthHttpCall from '../../../hooks/useAuthHttpCall';
+import { BACKEND_URL } from '../../../config';
 
 const categories = [
   'Actualidad',
@@ -22,9 +23,11 @@ function SearchCategory() {
   const { get } = useAuthHttpCall();
 
   useEffect(() => {
+    if (selectedCategory == null) return;
+
     const fetchNews = async () => {
       try {
-        const data = get(`/category-news/${selectedCategory}`);
+        const data = await get(`/category-news/${selectedCategory}`);
         setNews(data.data);
       } catch (error) {
         console.error('Error al realizar la solicitud:', error);
@@ -58,7 +61,7 @@ function SearchCategory() {
         )}
       </div>
 
-      {news.length === 0 ? (
+      {!news || news.length === 0 ? (
         <p>No se encontraron noticias.</p>
       ) : (
         <ul className="noticia">

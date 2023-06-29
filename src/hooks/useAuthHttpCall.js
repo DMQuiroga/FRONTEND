@@ -1,4 +1,5 @@
 import { useUser } from '../context/UserContext';
+import { BACKEND_URL } from '../config';
 
 function useAuthHttpCall() {
   const [user] = useUser();
@@ -7,7 +8,7 @@ function useAuthHttpCall() {
     const headers = {};
     if (user) headers.Authorization = `Bearer ${user.token}`;
 
-    const res = await fetch(import.meta.env.VITE_BACKEND_URL + url, {
+    const res = await fetch(BACKEND_URL + url, {
       headers,
     });
     const responseBody = await res.json();

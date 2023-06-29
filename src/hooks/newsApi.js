@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { BACKEND_URL } from '../config';
 
 export function useNews() {
   const [news, setNews] = useState([]);
