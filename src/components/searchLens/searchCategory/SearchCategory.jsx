@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import './SearchCategory.css';
 import Scorer from '../../Scorer';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import useAuthHttpCall from '../../../hooks/useAuthHttpCall';
 
 const categories = [
   'Actualidad',
@@ -20,22 +19,13 @@ function SearchCategory() {
   const [news, setNews] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showCategories, setShowCategories] = useState(false);
+  const { get } = useAuthHttpCall();
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        let url = BACKEND_URL;
-        if (selectedCategory) {
-          url = `${BACKEND_URL}/category-news/${selectedCategory}`;
-        }
-
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.status === 'ok') {
-          setNews(data.data);
-        } else {
-          console.error('Error al obtener las noticias:', data.message);
-        }
+        const data = get(`/category-news/${selectedCategory}`);
+        setNews(data.data);
       } catch (error) {
         console.error('Error al realizar la solicitud:', error);
       }

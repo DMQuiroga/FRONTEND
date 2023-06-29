@@ -7,7 +7,9 @@ function useAuthHttpCall() {
     const headers = {};
     if (user) headers.Authorization = `Bearer ${user.token}`;
 
-    const res = await fetch(url, { headers });
+    const res = await fetch(import.meta.env.VITE_BACKEND_URL + url, {
+      headers,
+    });
     const responseBody = await res.json();
     if (!res.ok) {
       throw new Error(res.status + ':' + responseBody.error);
