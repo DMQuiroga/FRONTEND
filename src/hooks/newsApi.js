@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
-import { BACKEND_URL } from '../config';
+import useAuthHttpCall from './useAuthHttpCall';
 
-export function useNews() {
+export function useNews(selectedCategory) {
   const [news, setNews] = useState([]);
+  const { get } = useAuthHttpCall();
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch(BACKEND_URL + '/today-news');
-        const data = await response.json();
-        if (data.status === 'ok') {
-          setNews(data.data);
-        } else {
-          console.error('Error al obtener las noticias:', data.message);
-        }
+        let url = '/today-news';
+        if (selectedCategory !== null)
+          url = `/category-news/${selectedCategory}`;
+
+        const data = await get(url);
+        setNews(data.data);
       } catch (error) {
         console.error('Error al realizar la solicitud:', error);
       }
     };
 
     fetchNews();
-  }, []);
+  }, [selectedCategory]);
 
   return news;
 }

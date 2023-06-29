@@ -1,11 +1,8 @@
-import useNews from '../../hooks/newsApi';
-import NewsCard from '../NewsCard';
+import NewsCard from './NewsCard';
 
-function TodayNews() {
-  const news = useNews();
+function NewsVisor({ news }) {
   return (
     <>
-      <h1>Noticias de Hoy</h1>
       {news.length === 0 ? (
         <p>No se encontraron noticias</p>
       ) : (
@@ -21,4 +18,4 @@ function TodayNews() {
   );
 }
 
-export default TodayNews;
+export default NewsVisor;

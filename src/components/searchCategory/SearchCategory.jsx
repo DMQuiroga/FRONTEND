@@ -1,39 +1,8 @@
-import { useEffect, useState } from 'react';
-import useAuthHttpCall from '../../hooks/useAuthHttpCall';
-import NewsCard from '../NewsCard';
+import { useState } from 'react';
+import { NEWS_CATEGORIES } from '../../config';
 
-const categories = [
-  'Actualidad',
-  'Sanidad',
-  'Naturaleza',
-  'Ciencia y tecnología',
-  'Economía y negocios',
-  'Deportes',
-  'Entretenimiento',
-  'Psicología',
-  'Estilo de vida',
-];
-
-function SearchCategory() {
-  const [news, setNews] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+function SearchCategory({ selectedCategory, setSelectedCategory }) {
   const [showCategories, setShowCategories] = useState(false);
-  const { get } = useAuthHttpCall();
-
-  useEffect(() => {
-    if (selectedCategory == null) return;
-
-    const fetchNews = async () => {
-      try {
-        const data = await get(`/category-news/${selectedCategory}`);
-        setNews(data.data);
-      } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
-      }
-    };
-
-    fetchNews();
-  }, [selectedCategory]);
 
   const selectCategory = (category) => {
     setSelectedCategory(category);
@@ -44,32 +13,29 @@ function SearchCategory() {
     setShowCategories(!showCategories);
   };
 
+  const selectedStyle = (index) => {
+    if (index === selectedCategory - 1) return 'active';
+    return '';
+  };
+
   return (
     <>
       <div className="category-dropdown">
         <button onClick={toggleCategories}>Categorías</button>
         {showCategories && (
           <div className="category-menu">
-            {categories.map((category, index) => (
-              <button key={index} onClick={() => selectCategory(index + 1)}>
+            {NEWS_CATEGORIES.map((category, index) => (
+              <button
+                key={index}
+                className={selectedStyle(index)}
+                onClick={() => selectCategory(index + 1)}
+              >
                 {category}
               </button>
             ))}
           </div>
         )}
       </div>
-
-      {!news || news.length === 0 ? (
-        <p>No se encontraron noticias.</p>
-      ) : (
-        <ul className="noticia">
-          {news.map((noticia) => (
-            <li key={noticia.id}>
-              <NewsCard noticia={noticia} />
-            </li>
-          ))}
-        </ul>
-      )}
     </>
   );
 }

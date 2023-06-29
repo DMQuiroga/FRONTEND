@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
 import Toggle from './Toggle';
 import AvatarButton from './AvatarButton/AvatarButton';
+import SearchCategory from '../components/searchCategory/SearchCategory';
 
 function Index() {
   const [user] = useUser();

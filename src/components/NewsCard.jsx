@@ -1,6 +1,6 @@
 import Scorer from './Scorer';
 import './NewsCard.css';
-import { BACKEND_URL } from '../config';
+import { BACKEND_URL, NEWS_CATEGORIES } from '../config';
 
 function NewsCard({ noticia }) {
   return (
@@ -34,7 +34,8 @@ function NewsCard({ noticia }) {
       </div>
       <p className="date">
         Fecha de publicación:{' '}
-        {new Date(noticia.publishDate).toLocaleDateString('es-ES')}
+        {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
+        {NEWS_CATEGORIES[noticia.categoryId]}
       </p>
     </div>
   );

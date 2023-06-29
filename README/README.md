@@ -33,9 +33,9 @@ USUARIOS REGISTRADOS
 ○ Gestión del perfil de usuario (Nombre, Email, Biografía, Foto, …)
 
 prioridades:
-1- Usuarios ejemlo de la base de datos no funcionan.
 2- Token no esta funcionando hay que sacarlo de otra manera.
 3- Crear noticia
 4- Boton votar
 5- visualizar el usuario y la fotoavatar de usuario en la noticia que fue creada por el.
 6- Meter dentro del button el logout y hacer que el boton sea el inicio de sesion.
+7- seleccionar categorias en header
