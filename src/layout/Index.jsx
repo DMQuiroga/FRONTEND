@@ -3,19 +3,22 @@ import { useUser } from '../context/UserContext';
 import './Index.css';
 import Footer from './Footer';
 import { useAuthentication } from '../hooks/authApi';
-import Toggle from './Toggle';
-import AvatarButton from './AvatarButton/AvatarButton';
-import SearchCategory from '../components/searchCategory/SearchCategory';
+import Toggle from './toggle';
+import AvatarButton from '../pages/user/AvatarButton';
 
 function Index() {
   const [user] = useUser();
   const { logout } = useAuthentication();
 
+  const handleLinkClick = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <header>
         <div className="content">
-          <Link to="/">
+          <Link to="/" onClick={handleLinkClick}>
             <h1>HB NEWS</h1>
           </Link>
           {user ? (
