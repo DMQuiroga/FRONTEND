@@ -38,4 +38,3 @@ prioridades:
 4- Boton votar
 5- visualizar el usuario y la fotoavatar de usuario en la noticia que fue creada por el.
 6- Meter dentro del button el logout y hacer que el boton sea el inicio de sesion.
-7- seleccionar categorias en header
