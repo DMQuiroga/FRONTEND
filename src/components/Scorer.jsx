@@ -1,33 +1,41 @@
 import { useState } from 'react';
-import { useUser } from '../context/UserContext';
-
-/* 
-1- FRONTEND: 
-            Coger del contexto el usuario y si no tengo usuario es decir no estoy logueado entonces 
-            los botones de votar negativamente y positivamente no los muestro. Solo muestro el 
-            numero de votaciones.
-2- FRONTEND: Guardar el voto
-      Usar nuestro post de hooks/useAuthHttpCall --- Para
-      NewsApi.jsx => crear una nueva funcion que sea votar
-      No crear dos, es la misma y pasarle por parametro que sea un +1 o un -1
-      Volvemos al componente y hacer que se haga esa llamada al pulsar el botón.
-3- BACKEND: Guardar de alguna forma que el usuario a votado a la noticia 55. Hacer más adelante.
-
-*/
 
 function Scorer({ initial = 0 }) {
   const [valor, setValor] = useState(initial);
-  const [user] = useUser();
 
-  const handleIncrement = () => {
+  return (
+    <div className="scorer">
+      <button onClick={() => valor > 0 && setValor(valor - 1)}>-</button>
+      <span>{valor}</span>
+      <button onClick={() => setValor(valor + 1)}>+</button>
+    </div>
+  );
+}
+
+export default Scorer;
+
+/*
+import { useState } from 'react';
+import { useUser } from '../context/UserContext';
+import { useVoteLike, useVoteDislike } from '../hooks/newsApi';
+
+function Scorer({ initial = 0, newsId }) {
+  const [valor, setValor] = useState(initial);
+  const [user] = useUser();
+  const voteLike = useVoteLike(newsId);
+  const voteDislike = useVoteDislike(newsId);
+
+  const handleIncrement = async () => {
     if (user) {
       setValor(valor + 1);
+      await voteLike();
     }
   };
 
-  const handleDecrement = () => {
-    if (user && valor > 0) {
+  const handleDecrement = async () => {
+    if (user) {
       setValor(valor - 1);
+      await voteDislike(newsId);
     }
   };
 
@@ -35,9 +43,14 @@ function Scorer({ initial = 0 }) {
     <div className="scorer">
       {user && (
         <>
-          <button onClick={handleDecrement}>☠️</button>
+          <button onClick={handleDecrement}>☠️dislike</button>
           <span>{valor}</span>
-          <button onClick={handleIncrement}>❤️</button>
+          <button onClick={handleIncrement}>❤️like</button>
+        </>
+      )}
+      {!user && (
+        <>
+          <span>Puntuación: {valor}</span>
         </>
       )}
     </div>
@@ -45,3 +58,4 @@ function Scorer({ initial = 0 }) {
 }
 
 export default Scorer;
+*/
