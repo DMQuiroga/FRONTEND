@@ -30,7 +30,7 @@ function NewsCard({ noticia }) {
         </div>
       </div>
       <div className="scorer">
-        <Scorer className="score" initial={noticia.score} />
+        <Scorer className="score" initial={noticia.score} newsId={noticia.id} />
       </div>
       <p className="date">
         Fecha de publicación:{' '}

@@ -6,7 +6,7 @@ function useAuthHttpCall() {
 
   const get = async (url) => {
     const headers = {};
-    if (user) headers.Authorization = `Bearer ${user.token}`;
+    if (user) headers.Authorization = `${user.token}`;
 
     const res = await fetch(BACKEND_URL + url, {
       headers,
@@ -22,10 +22,10 @@ function useAuthHttpCall() {
     const isFormData = body instanceof FormData;
 
     const headers = {};
-    if (user) headers.Authorization = `Bearer ${user.token}`;
+    if (user) headers.Authorization = `${user.token}`;
     if (!isFormData) headers['Content-Type'] = 'application/json';
 
-    const res = await fetch(url, {
+    const res = await fetch(BACKEND_URL + url, {
       method: 'POST',
       headers,
       body: isFormData ? body : JSON.stringify(body),
