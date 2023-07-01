@@ -26,7 +26,7 @@ export function useNews(selectedCategory) {
 }
 
 export function useVoteLike(newsId) {
-  const [votes, setVotes] = useState([]);
+  const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
 
   const votePositive = async () => {
@@ -43,7 +43,7 @@ export function useVoteLike(newsId) {
 }
 
 export function useVoteDislike(newsId) {
-  const [votes, setVotes] = useState([]);
+  const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
 
   const voteNegative = async () => {
