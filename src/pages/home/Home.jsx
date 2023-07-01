@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import NewsVisor from '../../components/NewsVisor';
 import SearchCategory from '../../components/searchCategory/SearchCategory';
-import useNews from '../../hooks/newsApi';
+import { useNews } from '../../hooks/newsApi';
+import { NEWS_CATEGORIES } from '../../config';
 
 function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,7 +16,8 @@ function Home() {
       />
 
       <h1>
-        Mostrando noticias de {selectedCategory ? selectedCategory : 'Hoy'}
+        Mostrando noticias de{' '}
+        {selectedCategory ? NEWS_CATEGORIES[selectedCategory] : 'Hoy'}
       </h1>
       <NewsVisor news={news} />
     </>

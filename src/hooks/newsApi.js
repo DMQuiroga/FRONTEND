@@ -25,12 +25,6 @@ export function useNews(selectedCategory) {
   return news;
 }
 
-// Votar una noticia positivamente
-// router.post('/news/:id/like', authUser, voteLike);
-// // Votar una noticia negativamente
-// router.post('/news/:id/dislike', authUser, voteDislike);
-
-/*
 export function useVoteLike(newsId) {
   const [votes, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
@@ -66,6 +60,3 @@ export function useVoteDislike(newsId) {
 }
 
 export default { useNews, useVoteLike, useVoteDislike };
-*/
-
-export default useNews;

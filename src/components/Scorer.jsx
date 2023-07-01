@@ -1,25 +1,8 @@
 import { useState } from 'react';
-
-function Scorer({ initial = 0 }) {
-  const [valor, setValor] = useState(initial);
-
-  return (
-    <div className="scorer">
-      <button onClick={() => valor > 0 && setValor(valor - 1)}>-</button>
-      <span>{valor}</span>
-      <button onClick={() => setValor(valor + 1)}>+</button>
-    </div>
-  );
-}
-
-export default Scorer;
-
-/*
-import { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useVoteLike, useVoteDislike } from '../hooks/newsApi';
 
-function Scorer({ initial = 0, newsId }) {
+function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
   const [user] = useUser();
   const voteLike = useVoteLike(newsId);
@@ -58,4 +41,3 @@ function Scorer({ initial = 0, newsId }) {
 }
 
 export default Scorer;
-*/
