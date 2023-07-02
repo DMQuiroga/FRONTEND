@@ -1,19 +1,17 @@
 import { useUser } from '../context/UserContext';
 import useAuthHttpCall from './useAuthHttpCall';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
 export function useAuthentication() {
-  const { post } = useAuthHttpCall();
+  const { post, del } = useAuthHttpCall();
   const [, setUser] = useUser();
 
   const login = (email, password) =>
-    post(BACKEND_URL + '/login', { email, password }).then((response) =>
+    post('/login', { email, password }).then((response) =>
       setUser(response.data)
     );
 
   const signup = (name, surname, email, password) =>
-    post(BACKEND_URL + '/user', {
+    post('/user', {
       name,
       surname,
       email,
@@ -22,5 +20,8 @@ export function useAuthentication() {
 
   const logout = () => setUser();
 
-  return { signup, login, logout };
+  const deleteNews = (id) =>
+    del(`/news/${id}`).then((response) => response.data);
+
+  return { signup, login, logout, deleteNews };
 }
