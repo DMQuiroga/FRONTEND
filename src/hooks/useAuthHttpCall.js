@@ -37,8 +37,23 @@ function useAuthHttpCall() {
     }
     return responseBody;
   };
+  const del = async (url) => {
+    const headers = {};
+    if (user) headers.Authorization = `${user.token}`;
 
-  return { get, post };
+    const res = await fetch(BACKEND_URL + url, {
+      method: 'DELETE',
+      headers,
+    });
+
+    const responseBody = await res.json();
+    if (!res.ok) {
+      throw new Error(res.status + ':' + responseBody.error);
+    }
+    return responseBody;
+  };
+
+  return { get, post, del };
 }
 
 export default useAuthHttpCall;

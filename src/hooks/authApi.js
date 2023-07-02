@@ -2,7 +2,7 @@ import { useUser } from '../context/UserContext';
 import useAuthHttpCall from './useAuthHttpCall';
 
 export function useAuthentication() {
-  const { post } = useAuthHttpCall();
+  const { post, del } = useAuthHttpCall();
   const [, setUser] = useUser();
 
   const login = (email, password) =>
@@ -20,5 +20,8 @@ export function useAuthentication() {
 
   const logout = () => setUser();
 
-  return { signup, login, logout };
+  const deleteNews = (id) =>
+    del(`/news/${id}`).then((response) => response.data);
+
+  return { signup, login, logout, deleteNews };
 }

@@ -1,8 +1,26 @@
 import Scorer from './Scorer';
 import './NewsCard.css';
 import { BACKEND_URL, NEWS_CATEGORIES } from '../config';
+import { useAuthentication } from '../hooks/authApi';
+import { useUser } from '../context/UserContext';
 
 function NewsCard({ noticia }) {
+  const { deleteNews } = useAuthentication();
+  const [user] = useUser();
+
+  const handleDelete = () => {
+    deleteNews(noticia.id)
+      .then((response) => {
+        console.log(
+          'La noticia se ha borrado correctamente (FRONTEND)',
+          response
+        );
+      })
+      .catch((error) => {
+        console.error('No se ha borrado la noticia (FRONTEND)', error);
+      });
+  };
+
   return (
     <div className="newscard">
       <h2 className="newstitle">{noticia.title}</h2>
@@ -32,6 +50,11 @@ function NewsCard({ noticia }) {
       <div className="scorer">
         <Scorer className="score" initial={noticia.score} newsId={noticia.id} />
       </div>
+      {user && user.id == noticia.userId ? (
+        <section className="delete">
+          <button onClick={handleDelete}> Borrar </button>
+        </section>
+      ) : null}
       <p className="date">
         Fecha de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
