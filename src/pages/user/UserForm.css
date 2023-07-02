@@ -1,18 +1,25 @@
-.contenedor {
-  border: 1px solid black;
+div.contenedor {
+  margin-top: 30px;
 }
 
-.general {
+form.general {
   display: flex;
   flex-direction: column;
 }
 
-input {
+form.general input {
   border: 1px solid gray;
   border-radius: 5px;
   max-width: 300px;
+  padding: 10px 0;
 }
 
-label {
+form.general label {
   margin: 10px 0;
+}
+
+img.imagen-usuario {
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
 }

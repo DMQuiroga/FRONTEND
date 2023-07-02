@@ -10,6 +10,7 @@ import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import UserForm from './pages/user/UserForm';
 import NotFoundPage from './pages/notFoundPage/NotFoundPage';
+import UserUpdate from './pages/user/UserUpdate';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
       <Route path="userinfo" element={<UserForm />} />
+      <Route path="userupdate" element={<UserUpdate />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )

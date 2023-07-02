@@ -1,61 +1,48 @@
-//import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../../config';
+import useUserMe from '../../hooks/userApi';
 import './UserForm.css';
 
 const UserForm = () => {
-  /* const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    // Simulación de obtención de datos de la base de datos
-    const fetchUserData = async () => {
-      try {
-        // Realiza la solicitud a tu API o base de datos para obtener la información del usuario
-        const response = await fetch("");
-        const data = await response.json();
-        setUserData(data);
-      } catch (error) {
-        console.error("Error al obtener los datos del usuario:", error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  if (!userData) {
-    return <p>Cargando...</p>;
-  } */
+  const user = useUserMe();
+  //const formattedDate = user.createdAt ? user.createdAt.split(' ')[0] : '';
 
   return (
     <>
       <div className="contenedor">
-        <h2>Información del Usuario</h2>
+        <h2 className="titulo">Información del Usuario</h2>
         <form className="general">
           <label>Nombres</label>
-          {/* <input type="text" value={userData.name} readOnly /> */}
-          <input type="text" value="Eduardo" readOnly />
+          <input type="text" value={user.name} readOnly />
 
           <label>Apellidos</label>
-          {/* <input type="text" value={userData.surname} readOnly /> */}
-          <input type="text" value="Castro" readOnly />
+          <input type="text" value={user.surname} readOnly />
 
           <label>Correo electrónico</label>
-          {/* <input type="email" value={userData.email} readOnly /> */}
-          <input type="text" value="eduardo@eduardo.com" readOnly />
+          <input type="email" value={user.email} readOnly />
 
           <label>Biografía</label>
-          {/* <input type="date" value={userData.biography} readOnly /> */}
-          <input type="text" value="Estudio en HAB" readOnly />
+          <input type="text" value={user.biography} readOnly />
 
-          <label>Cuenta activa desde</label>
-          {/* <input type="date" value={userData.} readOnly /> */}
-          <input type="text" value="xx/xx/xxxx" readOnly />
+          {/* <label>Cuenta activa desde</label>
+          <input type="date" value={formattedDate} readOnly /> */}
 
-          {/* Agrega más campos de formulario según la información que desees mostrar */}
+          <div className="imagen-usuario">
+            {user.imagenUrl && !user.imagenUrl.startsWith('http') ? (
+              <div className="newsCard-left">
+                <img
+                  className="imagen"
+                  src={`${BACKEND_URL}/uploads/${user.imagenUrl}`}
+                  alt=""
+                />
+              </div>
+            ) : user.imagenUrl && user.imagenUrl.startsWith('http') ? (
+              <div className="newsCard-left">
+                <img className="imagen" src={user.imagenUrl} alt="" />
+              </div>
+            ) : null}
+          </div>
         </form>
       </div>
-      <p>
-        <Link to={'/'}>Go to Home</Link>
-      </p>
     </>
   );
 };
