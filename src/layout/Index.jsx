@@ -10,10 +10,6 @@ function Index() {
     window.location.reload();
   };
 
-  const handleLinkClick = () => {
-    window.location.reload();
-  };
-
   return (
     <>
       <header className="header">
