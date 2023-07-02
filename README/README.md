@@ -4,6 +4,8 @@ TO DO NO PRIORITARIO:
 3- controlador de errores
 5- Header y footer estatico en web position=fixed
 6- Porque devuelve 304 en terminal de backend cada vez que se hace get de /today-news y get category
+7- En el boton de usuario de vuelve a home
+8- Cuando borras una noticia no desaparece la noticia hay que hacer F5
 
 # PRIORIDADES!!!!!!!:
 
