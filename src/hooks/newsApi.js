@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import useAuthHttpCall from './useAuthHttpCall';
 
+// OBTENER LAS NOTICIAS DE CATEGORIAS ORDENADAS POR FECHA
+// OBTENER NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
 export function useNews(selectedCategory) {
   const [news, setNews] = useState([]);
   const { get } = useAuthHttpCall();
@@ -25,6 +27,7 @@ export function useNews(selectedCategory) {
   return news;
 }
 
+// VOTAR NOTICIAS POSITIVAMENTE
 export function useVoteLike(newsId) {
   const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
@@ -42,6 +45,7 @@ export function useVoteLike(newsId) {
   return votePositive;
 }
 
+// VOTAR NOTICIAS NEGATIVO
 export function useVoteDislike(newsId) {
   const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
