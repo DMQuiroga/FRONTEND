@@ -1,10 +1,15 @@
 import { Link, Outlet } from 'react-router-dom';
 import './Index.css';
 import Footer from './Footer';
+
 import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
 
 function Index() {
+  const handleLinkClick = () => {
+    window.location.reload();
+  };
+
   const handleLinkClick = () => {
     window.location.reload();
   };

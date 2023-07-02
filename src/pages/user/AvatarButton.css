@@ -4,6 +4,7 @@
   box-sizing: content-box;
 }
 
+
 span.avatar-button {
   position: relative;
 }
@@ -29,7 +30,7 @@ span.avatar-button {
   position: absolute;
 }
 
-ul.menu-options {
+ul {
   list-style: none;
 }
 
