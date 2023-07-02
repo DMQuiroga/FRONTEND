@@ -36,9 +36,12 @@ function NewsCard({ noticia }) {
             <img className="imagen" src={noticia.userImageUrl} alt="Avatar" />
           ) : null}
         </div>
-        <h4 className="username">
-          {noticia.name} {noticia.surname}
-        </h4>
+        <span className="usercreador">
+          Autor noticia:{' '}
+          <h4 className="username">
+            {noticia.name} {noticia.surname}
+          </h4>
+        </span>
       </div>
       <div className="newsCard-container"></div>
       <h2 className="newstitle">{noticia.title}</h2>
