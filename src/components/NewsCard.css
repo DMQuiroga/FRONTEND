@@ -54,3 +54,17 @@ ul {
 .newscard .newsCard-right {
   padding: 10px;
 }
+
+.newscard .userImage {
+  object-fit: cover;
+  border-radius: 50%;
+  max-width: 50px;
+  padding: 15px;
+  margin-right: 20px;
+}
+
+.newscard .userinfocard {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  display: flex;
+}

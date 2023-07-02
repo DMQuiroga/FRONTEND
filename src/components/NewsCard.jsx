@@ -23,6 +23,24 @@ function NewsCard({ noticia }) {
 
   return (
     <div className="newscard">
+      <div className="userinfocard">
+        <div className="userImage">
+          {noticia.userImageUrl && !noticia.userImageUrl.startsWith('http') ? (
+            <img
+              className="imagen"
+              src={`${BACKEND_URL}/uploads/${noticia.userImageUrl}`}
+              alt="Avatar"
+            />
+          ) : noticia.userImageUrl &&
+            noticia.userImageUrl.startsWith('http') ? (
+            <img className="imagen" src={noticia.userImageUrl} alt="Avatar" />
+          ) : null}
+        </div>
+        <h4 className="username">
+          {noticia.name} {noticia.surname}
+        </h4>
+      </div>
+      <div className="newsCard-container"></div>
       <h2 className="newstitle">{noticia.title}</h2>
       <h4 className="introtext">{noticia.introText} </h4>
       <div className="newsCard-container">
@@ -50,7 +68,7 @@ function NewsCard({ noticia }) {
       <div className="scorer">
         <Scorer className="score" initial={noticia.score} newsId={noticia.id} />
       </div>
-      {user && user.id == noticia.userId ? (
+      {user && user.id === noticia.userId ? (
         <section className="delete">
           <button onClick={handleDelete}> Borrar </button>
         </section>
