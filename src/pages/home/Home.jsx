@@ -17,7 +17,7 @@ function Home() {
 
       <h1>
         Mostrando noticias de{' '}
-        {selectedCategory ? NEWS_CATEGORIES[selectedCategory] : 'Hoy'}
+        {selectedCategory ? NEWS_CATEGORIES[selectedCategory - 1] : 'Hoy'}
       </h1>
       <NewsVisor news={news} />
     </>

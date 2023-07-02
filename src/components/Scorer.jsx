@@ -26,14 +26,14 @@ function Scorer({ initial, newsId }) {
     <div className="scorer">
       {user && (
         <>
-          <button onClick={handleDecrement}>☠️dislike</button>
-          <span>{valor}</span>
-          <button onClick={handleIncrement}>❤️like</button>
+          <button onClick={handleDecrement}>☠️Dislike</button>
+          <span> Puntuación: {valor} </span>
+          <button onClick={handleIncrement}>Like❤️</button>
         </>
       )}
       {!user && (
         <>
-          <span>Puntuación: {valor}</span>
+          <span>Puntuación noticia: {valor}</span>
         </>
       )}
     </div>
