@@ -2,14 +2,16 @@ header.header {
   background-color: #0f1111;
   color: white;
   border-bottom: 2px solid #8c0ee6d7;
+  position: fixed;
+  width: 100%;
 }
 
-header .content {
+header .header-content {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 5px 20px 0px 20px;
 }
 
 header h1 {
@@ -27,6 +29,10 @@ header span.toggle-button {
   margin-right: 15px;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.content {
+  padding-top: 70px;
 }
 
 footer {
