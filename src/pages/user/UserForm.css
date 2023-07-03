@@ -1,0 +1,25 @@
+div.contenedor {
+  margin-top: 30px;
+}
+
+form.general {
+  display: flex;
+  flex-direction: column;
+}
+
+form.general input {
+  border: 1px solid gray;
+  border-radius: 5px;
+  max-width: 300px;
+  padding: 10px 0;
+}
+
+form.general label {
+  margin: 10px 0;
+}
+
+img.imagen-usuario {
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+}

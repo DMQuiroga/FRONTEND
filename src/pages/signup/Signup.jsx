@@ -103,6 +103,9 @@ function Signup() {
         ¿Ya estás registrado?
         <Link to="/login">Inicia sesión</Link>
       </p>
+      <p>
+        <Link to={'/'}>Go to Home</Link>
+      </p>
       <div className="pyramid-loader">
         <div className="wrapper">
           <span className="side side1"></span>
