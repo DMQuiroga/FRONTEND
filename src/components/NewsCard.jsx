@@ -79,6 +79,9 @@ function NewsCard({ noticia }) {
       <p className="date">
         Fecha de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
+        Hora de publicación:{' '}
+        {new Date(noticia.publishDate).toLocaleTimeString('es-ES')}
+        &nbsp;|&nbsp;
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
       </p>
     </div>
