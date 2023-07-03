@@ -9,16 +9,15 @@ function NewsCard({ noticia }) {
   const [user] = useUser();
 
   const handleDelete = () => {
-    deleteNews(noticia.id)
-      .then((response) => {
-        console.log(
-          'La noticia se ha borrado correctamente (FRONTEND)',
-          response
-        );
-      })
-      .catch((error) => {
-        console.error('No se ha borrado la noticia (FRONTEND)', error);
-      });
+    if (window.confirm('¿Estás seguro de que quieres borrar esta noticia?')) {
+      deleteNews(noticia.id)
+        .then((response) => {
+          console.log('La noticia se ha borrado satisfactoriamente', response);
+        })
+        .catch((error) => {
+          console.error('No se ha podido borrar la noticia', error);
+        });
+    }
   };
 
   return (
