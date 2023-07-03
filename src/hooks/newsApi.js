@@ -28,13 +28,13 @@ export function useNews(selectedCategory) {
 }
 
 // VOTAR NOTICIAS POSITIVAMENTE
-export function useVoteLike(newsId) {
+export function useVote(newsId, voteType) {
   const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
 
   const votePositive = async () => {
     try {
-      const url = `/news/${newsId}/like`;
+      let url = `/news/${newsId}/${voteType}`;
       const data = await post(url);
       setVotes(data.data);
     } catch (error) {
@@ -45,22 +45,4 @@ export function useVoteLike(newsId) {
   return votePositive;
 }
 
-// VOTAR NOTICIAS NEGATIVO
-export function useVoteDislike(newsId) {
-  const [, setVotes] = useState([]);
-  const { post } = useAuthHttpCall();
-
-  const voteNegative = async () => {
-    try {
-      const url = `/news/${newsId}/dislike`;
-      const data = await post(url);
-      setVotes(data.data);
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-    }
-  };
-
-  return voteNegative;
-}
-
-export default { useNews, useVoteLike, useVoteDislike };
+export default { useNews, useVote };

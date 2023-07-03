@@ -34,17 +34,23 @@ function NewsCard({ noticia }) {
   return (
     <div className="newscard">
       <div className="userinfocard">
-        <div className="userimage">
+        <div>
           {userAvatar ? (
-            <img className="imagen" src={userAvatar} alt="Avatar" />
+            <img className="userimage" src={userAvatar} alt="Avatar" />
           ) : null}
+          <span className="usercreador">
+            <h4 className="username">
+              {noticia.name} {noticia.surname}
+            </h4>
+          </span>
         </div>
-        <span className="usercreador">
-          Autor noticia:{' '}
-          <h4 className="username">
-            {noticia.name} {noticia.surname}
-          </h4>
-        </span>
+        <div className="scorer">
+          <Scorer
+            className="score"
+            initial={noticia.score}
+            newsId={noticia.id}
+          />
+        </div>
       </div>
       <div className="newsCard-container"></div>
       <h2 className="newstitle">{noticia.title}</h2>
@@ -59,21 +65,19 @@ function NewsCard({ noticia }) {
           <p className="text">{noticia.text}</p>
         </div>
       </div>
-      <div className="scorer">
-        <Scorer className="score" initial={noticia.score} newsId={noticia.id} />
-      </div>
-      {user && user.id === noticia.userId ? (
-        <section className="delete">
-          <button onClick={handleDelete}> Borrar </button>
-        </section>
-      ) : null}
-      <p className="date">
+      <p className="metadata">
         Fecha de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
         Hora de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleTimeString('es-ES')}
         &nbsp;|&nbsp;
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
+        {user && user.id === noticia.userId ? (
+          <>
+            <button onClick={handleDelete}> Borrar </button>
+            <button onClick={handleDelete}> Editar </button>
+          </>
+        ) : null}
       </p>
     </div>
   );

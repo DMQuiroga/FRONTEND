@@ -1,24 +1,23 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext';
-import { useVoteLike, useVoteDislike } from '../hooks/newsApi';
+import { useVote } from '../hooks/newsApi';
 
 function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
   const [user] = useUser();
-  const voteLike = useVoteLike(newsId);
-  const voteDislike = useVoteDislike(newsId);
+  const vote = useVote(newsId);
 
   const handleIncrement = async () => {
     if (user) {
       setValor(valor + 1);
-      await voteLike();
+      await vote(newsId, 'likesss');
     }
   };
 
   const handleDecrement = async () => {
     if (user) {
       setValor(valor - 1);
-      await voteDislike(newsId);
+      await vote(newsId, 'dislikesss');
     }
   };
 
@@ -26,9 +25,9 @@ function Scorer({ initial, newsId }) {
     <div className="scorer">
       {user && (
         <>
-          <button onClick={handleDecrement}>☠️Dislike</button>
+          <button onClick={handleDecrement}>☠️</button>
           <span> Puntuación: {valor} </span>
-          <button onClick={handleIncrement}>Like❤️</button>
+          <button onClick={handleIncrement}>❤️</button>
         </>
       )}
       {!user && (
