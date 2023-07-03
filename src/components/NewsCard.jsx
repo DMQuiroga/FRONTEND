@@ -21,65 +21,69 @@ function NewsCard({ noticia }) {
       });
   };
 
+  let userAvatar = noticia.userImageUrl;
+  if (!userAvatar.startsWith('http')) {
+    userAvatar = `${BACKEND_URL}/uploads/${noticia.userImageUrl}`;
+  }
+
+  let imagenNoticia = noticia.imagenUrl;
+  if (!imagenNoticia.startsWith('http')) {
+    imagenNoticia = `${BACKEND_URL}/uploads/${noticia.imagenUrl}`;
+  }
+
   return (
     <div className="newscard">
       <div className="userinfocard">
-        <div className="userImage">
-          {noticia.userImageUrl && !noticia.userImageUrl.startsWith('http') ? (
-            <img
-              className="imagen"
-              src={`${BACKEND_URL}/uploads/${noticia.userImageUrl}`}
-              alt="Avatar"
-            />
-          ) : noticia.userImageUrl &&
-            noticia.userImageUrl.startsWith('http') ? (
-            <img className="imagen" src={noticia.userImageUrl} alt="Avatar" />
+        <div>
+          {userAvatar ? (
+            <img className="userimage" src={userAvatar} alt="Avatar" />
           ) : null}
+          <span className="usercreador">
+            <h4 className="username">
+              {noticia.name} {noticia.surname}
+            </h4>
+          </span>
         </div>
-        <span className="usercreador">
-          Autor noticia:{' '}
-          <h4 className="username">
-            {noticia.name} {noticia.surname}
-          </h4>
-        </span>
+        <div className="scorer">
+          <Scorer
+            className="score"
+            initial={noticia.score}
+            newsId={noticia.id}
+          />
+        </div>
       </div>
       <div className="newsCard-container"></div>
       <h2 className="newstitle">{noticia.title}</h2>
       <h4 className="introtext">{noticia.introText} </h4>
       <div className="newsCard-container">
-        {noticia.imagenUrl && !noticia.imagenUrl.startsWith('http') ? (
+        {imagenNoticia ? (
           <div className="newsCard-left">
-            <img
-              className="imagen"
-              src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
-              alt={noticia.title}
-            />
-          </div>
-        ) : noticia.imagenUrl && noticia.imagenUrl.startsWith('http') ? (
-          <div className="newsCard-left">
-            <img
-              className="imagen"
-              src={noticia.imagenUrl}
-              alt={noticia.title}
-            />
+            <img className="imagen" src={imagenNoticia} alt={noticia.title} />
           </div>
         ) : null}
         <div className="newsCard-right">
           <p className="text">{noticia.text}</p>
         </div>
       </div>
-      <div className="scorer">
-        <Scorer className="score" initial={noticia.score} newsId={noticia.id} />
-      </div>
-      {user && user.id === noticia.userId ? (
-        <section className="delete">
-          <button onClick={handleDelete}> Borrar </button>
-        </section>
-      ) : null}
-      <p className="date">
+      <p className="metadata">
         Fecha de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
+        Hora de publicación:{' '}
+        {new Date(noticia.publishDate).toLocaleTimeString('es-ES')}
+        &nbsp;|&nbsp;
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
+        {user && user.id === noticia.userId ? (
+          <>
+            <button className="animated" onClick={handleDelete}>
+              {' '}
+              Borrar{' '}
+            </button>
+            <button className="animated" onClick={handleDelete}>
+              {' '}
+              Editar{' '}
+            </button>
+          </>
+        ) : null}
       </p>
     </div>
   );

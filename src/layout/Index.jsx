@@ -13,7 +13,7 @@ function Index() {
   return (
     <>
       <header className="header">
-        <div className="content">
+        <div className="header-content">
           <Link to="/" onClick={handleLinkClick}>
             <h1>HB NEWS</h1>
           </Link>
