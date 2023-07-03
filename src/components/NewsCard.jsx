@@ -24,7 +24,7 @@ function NewsCard({ noticia }) {
   return (
     <div className="newscard">
       <div className="userinfocard">
-        <div className="userImage">
+        <div className="userimage">
           {noticia.userImageUrl && !noticia.userImageUrl.startsWith('http') ? (
             <img
               className="imagen"

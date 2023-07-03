@@ -4,16 +4,12 @@ ul {
 
 .newscard {
   list-style: none;
-  border: 1px solid black;
+  border: 1.5px solid #3f026b;
   border-radius: 10px;
   margin: auto 5px 10px;
   display: flex;
   flex-direction: column;
   padding: 15px;
-}
-
-.newscard .user {
-  border: 1px solid black;
 }
 
 .newscard .newstitle {
@@ -55,7 +51,7 @@ ul {
   padding: 10px;
 }
 
-.newscard .userImage {
+.newscard .userimage {
   object-fit: cover;
   border-radius: 50%;
   max-width: 50px;
@@ -64,7 +60,7 @@ ul {
 }
 
 .newscard .userinfocard {
-  border-bottom: 1px solid black;
+  border-bottom: 1px ridge black;
   margin-bottom: 20px;
   display: flex;
 }

@@ -1,7 +1,7 @@
 header.header {
   background-color: #0f1111;
   color: white;
-  border-bottom: 2px solid rgb(5, 57, 87);
+  border-bottom: 2px solid #8c0ee6d7;
 }
 
 header .content {
@@ -31,6 +31,7 @@ header span.toggle-button {
 
 footer {
   background-color: #0f1111;
+  border-top: 2px solid #8c0ee6d7;
   color: white;
   position: fixed;
   left: 0;
