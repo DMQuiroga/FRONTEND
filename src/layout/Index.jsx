@@ -4,6 +4,8 @@ import Footer from './Footer';
 
 import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
+import CreateNews from '../pages/createNews/CreateNews';
+
 
 function Index() {
   const handleLinkClick = () => {
@@ -27,6 +29,7 @@ function Index() {
       </header>
       <main className="content">
         <Outlet />
+        <CreateNews />
       </main>
       <Footer />
     </>
