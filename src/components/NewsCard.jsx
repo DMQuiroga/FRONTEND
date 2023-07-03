@@ -21,19 +21,22 @@ function NewsCard({ noticia }) {
       });
   };
 
+  let userAvatar = noticia.userImageUrl;
+  if (!userAvatar.startsWith('http')) {
+    userAvatar = `${BACKEND_URL}/uploads/${noticia.userImageUrl}`;
+  }
+
+  let imagenNoticia = noticia.imagenUrl;
+  if (!imagenNoticia.startsWith('http')) {
+    imagenNoticia = `${BACKEND_URL}/uploads/${noticia.imagenUrl}`;
+  }
+
   return (
     <div className="newscard">
       <div className="userinfocard">
         <div className="userimage">
-          {noticia.userImageUrl && !noticia.userImageUrl.startsWith('http') ? (
-            <img
-              className="imagen"
-              src={`${BACKEND_URL}/uploads/${noticia.userImageUrl}`}
-              alt="Avatar"
-            />
-          ) : noticia.userImageUrl &&
-            noticia.userImageUrl.startsWith('http') ? (
-            <img className="imagen" src={noticia.userImageUrl} alt="Avatar" />
+          {userAvatar ? (
+            <img className="imagen" src={userAvatar} alt="Avatar" />
           ) : null}
         </div>
         <span className="usercreador">
@@ -47,21 +50,9 @@ function NewsCard({ noticia }) {
       <h2 className="newstitle">{noticia.title}</h2>
       <h4 className="introtext">{noticia.introText} </h4>
       <div className="newsCard-container">
-        {noticia.imagenUrl && !noticia.imagenUrl.startsWith('http') ? (
+        {imagenNoticia ? (
           <div className="newsCard-left">
-            <img
-              className="imagen"
-              src={`${BACKEND_URL}/uploads/${noticia.imagenUrl}`}
-              alt={noticia.title}
-            />
-          </div>
-        ) : noticia.imagenUrl && noticia.imagenUrl.startsWith('http') ? (
-          <div className="newsCard-left">
-            <img
-              className="imagen"
-              src={noticia.imagenUrl}
-              alt={noticia.title}
-            />
+            <img className="imagen" src={imagenNoticia} alt={noticia.title} />
           </div>
         ) : null}
         <div className="newsCard-right">
