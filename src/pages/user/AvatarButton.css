@@ -4,7 +4,6 @@
   box-sizing: content-box;
 }
 
-
 span.avatar-button {
   position: relative;
 }
@@ -23,11 +22,13 @@ span.avatar-button {
 }
 
 .menu {
-  background-color: black;
+  background-color: #040303;
   border: 1px solid grey;
   border-radius: 5px;
   width: 200px;
   position: absolute;
+  left: -62px;
+  top: 59px;
 }
 
 ul {
