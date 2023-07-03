@@ -25,18 +25,31 @@ function Footer() {
         <Acordeon content={acordeonContent}></Acordeon>
         {!acordeonContent ? (
           <>
-            <button onClick={() => openAcordeon('about-us', about)}>
+            <button
+              className="animated"
+              onClick={() => openAcordeon('about-us', about)}
+            >
               About us 🌐
             </button>
-            <button onClick={() => openAcordeon('contact', contact)}>
+            <button
+              className="animated"
+              onClick={() => openAcordeon('contact', contact)}
+            >
               Contact 📞
             </button>
-            <button onClick={() => openAcordeon('t-and-c', terms)}>
+            <button
+              className="animated"
+              onClick={() => openAcordeon('t-and-c', terms)}
+            >
               T&C 🛡️
             </button>
           </>
         ) : (
-          <button type="button" onClick={() => setAcordeonContent(null)}>
+          <button
+            className="animated"
+            type="button"
+            onClick={() => setAcordeonContent(null)}
+          >
             CERRAR ❌
           </button>
         )}

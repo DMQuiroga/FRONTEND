@@ -1,24 +1,32 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext';
-import { useVoteLike, useVoteDislike } from '../hooks/newsApi';
+import { useVote } from '../hooks/newsApi';
 
 function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
   const [user] = useUser();
-  const voteLike = useVoteLike(newsId);
-  const voteDislike = useVoteDislike(newsId);
+  const voteLike = useVote(newsId, 'like');
+  const voteDislike = useVote(newsId, 'dislike');
 
-  const handleIncrement = async () => {
-    if (user) {
-      setValor(valor + 1);
-      await voteLike();
-    }
+  const handleLike = () => {
+    handleVoteCall('like');
   };
-
-  const handleDecrement = async () => {
+  const handleDislike = () => {
+    handleVoteCall('dislike');
+  };
+  const handleVoteCall = async (voteType) => {
     if (user) {
-      setValor(valor - 1);
-      await voteDislike(newsId);
+      try {
+        if (voteType === 'like') {
+          await voteLike();
+          setValor(valor + 1);
+        } else {
+          await voteDislike();
+          setValor(valor - 1);
+        }
+      } catch (e) {
+        alert(e);
+      }
     }
   };
 
@@ -26,9 +34,9 @@ function Scorer({ initial, newsId }) {
     <div className="scorer">
       {user && (
         <>
-          <button onClick={handleDecrement}>☠️Dislike</button>
+          <button onClick={handleDislike}>☠️</button>
           <span> Puntuación: {valor} </span>
-          <button onClick={handleIncrement}>Like❤️</button>
+          <button onClick={handleLike}>❤️</button>
         </>
       )}
       {!user && (

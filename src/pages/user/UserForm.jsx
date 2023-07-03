@@ -1,10 +1,28 @@
-import { BACKEND_URL } from '../../config';
 import useUserMe from '../../hooks/userApi';
 import './UserForm.css';
+
+import {
+  NOT_LOGIN_USER_AVATAR,
+  DEFAULT_USER_AVATAR,
+  BACKEND_URL,
+} from '../../config';
 
 const UserForm = () => {
   const user = useUserMe();
   //const formattedDate = user.createdAt ? user.createdAt.split(' ')[0] : '';
+
+  // Determinar la URL para la imagen de avatar
+  let userImage = NOT_LOGIN_USER_AVATAR;
+  if (user) {
+    if (!user.imagenUrl) {
+      userImage = DEFAULT_USER_AVATAR;
+    } else {
+      userImage = user.imagenUrl;
+    }
+  }
+  if (!userImage.startsWith('http')) {
+    userImage = `${BACKEND_URL}/uploads/${userImage}`;
+  }
 
   return (
     <>
@@ -27,19 +45,9 @@ const UserForm = () => {
           <input type="date" value={formattedDate} readOnly /> */}
 
           <div className="imagen-usuario">
-            {user.imagenUrl && !user.imagenUrl.startsWith('http') ? (
-              <div className="newsCard-left">
-                <img
-                  className="imagen"
-                  src={`${BACKEND_URL}/uploads/${user.imagenUrl}`}
-                  alt=""
-                />
-              </div>
-            ) : user.imagenUrl && user.imagenUrl.startsWith('http') ? (
-              <div className="newsCard-left">
-                <img className="imagen" src={user.imagenUrl} alt="" />
-              </div>
-            ) : null}
+            <div className="newsCard-left">
+              <img className="imagen" src={userImage} alt="" />
+            </div>
           </div>
         </form>
       </div>
