@@ -74,8 +74,14 @@ function NewsCard({ noticia }) {
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
         {user && user.id === noticia.userId ? (
           <>
-            <button onClick={handleDelete}> Borrar </button>
-            <button onClick={handleDelete}> Editar </button>
+            <button className="animated" onClick={handleDelete}>
+              {' '}
+              Borrar{' '}
+            </button>
+            <button className="animated" onClick={handleDelete}>
+              {' '}
+              Editar{' '}
+            </button>
           </>
         ) : null}
       </p>
