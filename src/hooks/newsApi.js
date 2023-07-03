@@ -3,7 +3,7 @@ import useAuthHttpCall from './useAuthHttpCall';
 
 // OBTENER LAS NOTICIAS DE CATEGORIAS ORDENADAS POR FECHA
 // OBTENER NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
-export function useNews(selectedCategory) {
+export function useNews(selectedCategory, reloadNews) {
   const [news, setNews] = useState([]);
   const { get } = useAuthHttpCall();
 
@@ -17,7 +17,7 @@ export function useNews(selectedCategory) {
     };
 
     fetchNews();
-  }, [selectedCategory]);
+  }, [selectedCategory, reloadNews]);
 
   return news;
 }

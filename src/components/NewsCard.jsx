@@ -3,22 +3,37 @@ import './NewsCard.css';
 import { BACKEND_URL, NEWS_CATEGORIES } from '../config';
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
+import Swal from 'sweetalert2';
 
-function NewsCard({ noticia }) {
+function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
 
   const handleDelete = () => {
-    deleteNews(noticia.id)
-      .then((response) => {
-        console.log(
-          'La noticia se ha borrado correctamente (FRONTEND)',
-          response
-        );
-      })
-      .catch((error) => {
-        console.error('No se ha borrado la noticia (FRONTEND)', error);
-      });
+    Swal.fire({
+      title: 'HB News',
+      text: '¿Estás seguro de que quieres borrar esta noticia?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar!',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNews(noticia.id)
+          .then((response) => {
+            console.log(
+              'La noticia se ha borrado satisfactoriamente',
+              response
+            );
+            setReloadNews((prevState) => !prevState);
+          })
+          .catch((error) => {
+            console.error('No se ha podido borrar la noticia', error);
+          });
+      }
+    });
   };
 
   let userAvatar = noticia.userImageUrl;
@@ -67,9 +82,13 @@ function NewsCard({ noticia }) {
       </div>
       <p className="metadata">
         Fecha de publicación:{' '}
-        {new Date(noticia.publishDate).toLocaleDateString('es-ES')}&nbsp;|&nbsp;
-        Hora de publicación:{' '}
-        {new Date(noticia.publishDate).toLocaleTimeString('es-ES')}
+        {new Date(noticia.publishDate).toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        })}
         &nbsp;|&nbsp;
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
         {user && user.id === noticia.userId ? (
