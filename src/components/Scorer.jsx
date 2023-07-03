@@ -5,19 +5,28 @@ import { useVote } from '../hooks/newsApi';
 function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
   const [user] = useUser();
-  const vote = useVote(newsId);
+  const voteLike = useVote(newsId, 'like');
+  const voteDislike = useVote(newsId, 'dislike');
 
-  const handleIncrement = async () => {
-    if (user) {
-      setValor(valor + 1);
-      await vote(newsId, 'likesss');
-    }
+  const handleLike = () => {
+    handleVoteCall('like');
   };
-
-  const handleDecrement = async () => {
+  const handleDislike = () => {
+    handleVoteCall('dislike');
+  };
+  const handleVoteCall = async (voteType) => {
     if (user) {
-      setValor(valor - 1);
-      await vote(newsId, 'dislikesss');
+      try {
+        if (voteType === 'like') {
+          await voteLike();
+          setValor(valor + 1);
+        } else {
+          await voteDislike();
+          setValor(valor - 1);
+        }
+      } catch (e) {
+        alert(e);
+      }
     }
   };
 
@@ -25,9 +34,9 @@ function Scorer({ initial, newsId }) {
     <div className="scorer">
       {user && (
         <>
-          <button onClick={handleDecrement}>☠️</button>
+          <button onClick={handleDislike}>☠️</button>
           <span> Puntuación: {valor} </span>
-          <button onClick={handleIncrement}>❤️</button>
+          <button onClick={handleLike}>❤️</button>
         </>
       )}
       {!user && (

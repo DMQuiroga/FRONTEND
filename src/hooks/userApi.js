@@ -8,13 +8,9 @@ export function useUserMe() {
 
   useEffect(() => {
     const fetchUserMe = async () => {
-      try {
-        const url = '/user';
-        const data = await get(url);
-        setUserMe(data.data);
-      } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
-      }
+      const url = '/user';
+      const data = await get(url);
+      setUserMe(data.data);
     };
 
     fetchUserMe();

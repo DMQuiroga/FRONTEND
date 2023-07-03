@@ -9,16 +9,11 @@ export function useNews(selectedCategory) {
 
   useEffect(() => {
     const fetchNews = async () => {
-      try {
-        let url = '/today-news';
-        if (selectedCategory !== null)
-          url = `/category-news/${selectedCategory}`;
+      let url = '/today-news';
+      if (selectedCategory !== null) url = `/category-news/${selectedCategory}`;
 
-        const data = await get(url);
-        setNews(data.data);
-      } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
-      }
+      const data = await get(url);
+      setNews(data.data);
     };
 
     fetchNews();
@@ -33,13 +28,9 @@ export function useVote(newsId, voteType) {
   const { post } = useAuthHttpCall();
 
   const votePositive = async () => {
-    try {
-      let url = `/news/${newsId}/${voteType}`;
-      const data = await post(url);
-      setVotes(data.data);
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-    }
+    let url = `/news/${newsId}/${voteType}`;
+    const data = await post(url);
+    setVotes(data.data);
   };
 
   return votePositive;
