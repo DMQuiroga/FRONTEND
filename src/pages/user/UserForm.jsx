@@ -29,16 +29,16 @@ const UserForm = () => {
       <div className="contenedor">
         <h2 className="titulo">Información del Usuario</h2>
         <form className="general">
-          <label>Nombres</label>
+          <label>Nombre:</label>
           <input type="text" value={user.name} readOnly />
 
-          <label>Apellidos</label>
+          <label>Apellidos:</label>
           <input type="text" value={user.surname} readOnly />
 
-          <label>Correo electrónico</label>
+          <label>Correo electrónico:</label>
           <input type="email" value={user.email} readOnly />
 
-          <label>Biografía</label>
+          <label>Biografía:</label>
           <input type="text" value={user.biography} readOnly />
 
           {/* <label>Cuenta activa desde</label>

@@ -9,7 +9,71 @@
 }
 
 .category-dropdown button.active {
-  background-color: red;
+  color: black;
+  font-weight: bold;
+  border: 1.5px solid #8c0ee6d7;
+  padding: 5.5px;
+
+  -webkit-box-shadow: 12px 12px 18px -4px rgba(0, 0, 0, 0.77);
+  -moz-box-shadow: 12px 12px 18px -4px rgba(0, 0, 0, 0.77);
+  box-shadow: 12px 12px 18px -4px rgba(0, 0, 0, 0.77);
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  background: rgba(255, 73, 41, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(255, 73, 41, 1) 0%,
+    rgba(255, 73, 41, 1) 10%,
+    rgba(251, 104, 81, 1) 14%,
+    rgba(254, 40, 11, 1) 26%,
+    rgba(255, 34, 5, 1) 36%,
+    rgba(245, 0, 102, 1) 42%,
+    rgba(245, 0, 102, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 73, 41, 1) 0%,
+    rgba(255, 73, 41, 1) 10%,
+    rgba(251, 104, 81, 1) 14%,
+    rgba(254, 40, 11, 1) 26%,
+    rgba(255, 34, 5, 1) 36%,
+    rgba(245, 0, 102, 1) 42%,
+    rgba(245, 0, 102, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(255, 73, 41, 1) 0%,
+    rgba(255, 73, 41, 1) 10%,
+    rgba(251, 104, 81, 1) 14%,
+    rgba(254, 40, 11, 1) 26%,
+    rgba(255, 34, 5, 1) 36%,
+    rgba(245, 0, 102, 1) 42%,
+    rgba(245, 0, 102, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(255, 73, 41, 1) 0%,
+    rgba(255, 73, 41, 1) 10%,
+    rgba(251, 104, 81, 1) 14%,
+    rgba(254, 40, 11, 1) 26%,
+    rgba(255, 34, 5, 1) 36%,
+    rgba(245, 0, 102, 1) 42%,
+    rgba(245, 0, 102, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(255, 73, 41, 1) 0%,
+    rgba(255, 73, 41, 1) 10%,
+    rgba(251, 104, 81, 1) 14%,
+    rgba(254, 40, 11, 1) 26%,
+    rgba(255, 34, 5, 1) 36%,
+    rgba(245, 0, 102, 1) 42%,
+    rgba(245, 0, 102, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4929', endColorstr='#f50066', GradientType=1);
 }
 
 @media only screen and (max-width: 1000px) {
