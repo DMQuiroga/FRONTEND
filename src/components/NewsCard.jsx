@@ -1,6 +1,11 @@
 import Scorer from './Scorer';
 import './NewsCard.css';
-import { BACKEND_URL, NEWS_CATEGORIES } from '../config';
+import {
+  BACKEND_URL,
+  NEWS_CATEGORIES,
+  DEFAULT_USER_AVATAR,
+  DEFAULT_IMAGE_NEWS,
+} from '../config';
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
@@ -36,14 +41,44 @@ function NewsCard({ noticia, setReloadNews }) {
     });
   };
 
+  // TUTORÍA STEFANO
+  // let userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
+  // let imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
+
+  // _______________________________________________
+  // FOTO AVATAR USUARIO EN PUBLICACIÓN NOTICIA:
+  // 1º Obtenemos la URL de la imagen del avatar del usuario de la noticia
   let userAvatar = noticia.userImageUrl;
-  if (!userAvatar.startsWith('http')) {
-    userAvatar = `${BACKEND_URL}/uploads/${noticia.userImageUrl}`;
+  // Verificamos si la URL existe y no comienza con 'https'
+  if (userAvatar && !userAvatar.startsWith('https')) {
+    // Si no comienza con 'https', agregamos la imagen del nuestro Backend de archivo uploads
+    userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
+    // Si no hay URL de imagen de usuario en la noticia
+  } else if (!userAvatar) {
+    // Se construye una URL de avatar por defecto utilizando el BACKEND_URL y el ID de usuario de la noticia
+    userAvatar = `${BACKEND_URL}/avatar/${noticia.userId}`;
+    // Verificamos si la URL del avatar por defecto tampoco comienza con 'https'
+    if (!userAvatar.startsWith('https')) {
+      // Asignamos la imagen de avatar por defecto = DEFAULT_USER_AVATAR
+      userAvatar = DEFAULT_USER_AVATAR;
+    }
   }
 
+  // _______________________________________________
+  // FOTO NOTICIA EN PUBLICACIÓN:
   let imagenNoticia = noticia.imagenUrl;
-  if (!imagenNoticia.startsWith('http')) {
-    imagenNoticia = `${BACKEND_URL}/uploads/${noticia.imagenUrl}`;
+  // Verificamos si la URL de la imagen de la noticia existe y no comienza con 'https'
+  if (imagenNoticia && !imagenNoticia.startsWith('https')) {
+    // Si no comienza con 'https', agregamos la imagen del nuestro Backend de archivo uploads
+    imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
+  } else if (!imagenNoticia) {
+    // Obtener la imagen de la noticia del backend si la URL local es nula
+    imagenNoticia = `${BACKEND_URL}/noticia/${noticia.id}`;
+  }
+  // Verificamos si la imagen de la noticia es la imagen por defecto
+  if (imagenNoticia === `${BACKEND_URL}/noticia/${noticia.id}`) {
+    // Asignamos la imagen por defecto
+    imagenNoticia = DEFAULT_IMAGE_NEWS;
   }
 
   return (
