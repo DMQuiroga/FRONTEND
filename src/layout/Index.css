@@ -44,7 +44,6 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  text-align: center;
 }
 
 footer .content-footer {
@@ -61,6 +60,7 @@ footer section p {
 }
 
 button.animated {
+  cursor: pointer;
   background-color: #3f026b;
   padding: 5px;
   padding-right: 10px;
