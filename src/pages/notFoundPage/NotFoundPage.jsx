@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+// GESTIÓN DE RUTA NO ENCONTRADA
+
 function NotFoundPage() {
   return (
     <section>

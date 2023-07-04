@@ -1,7 +1,8 @@
 import { useState } from 'react';
-
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
 // import { BACKEND_URL } from '../../config';
+
+// CREAR NOTICIA
 
 function CreateNews() {
   const { post } = useAuthHttpCall();

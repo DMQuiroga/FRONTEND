@@ -4,6 +4,10 @@ import SearchCategory from '../../components/searchCategory/SearchCategory';
 import { NEWS_CATEGORIES } from '../../config';
 import './Home.css';
 
+// VISUALIZAR DEL <Outlet /> de </main>
+// 1. TODAS LAS NOTICIAS POR CATEGORIAS ORDENADAS POR FECHA
+// 2. NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
+
 function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 

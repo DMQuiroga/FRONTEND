@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import './UserForm.css';
 
+// BOTÓN DEL HEADER DE USUARIO FUNCIONALIDAD DE ACTUALIZAR LA INFORMACIÓN DEL USUARIO
+
 const UserUpdate = () => {
   const [user, setUser] = useUser();
   const [updatedUser, setUpdatedUser] = useState({ ...user });

@@ -1,6 +1,8 @@
 import { NEWS_CATEGORIES } from '../../config';
 import './SearchCategory.css';
 
+// SELECIONAR CATEGORIA DE NOTICIAS
+
 function SearchCategory({ selectedCategory, setSelectedCategory }) {
   const selectCategory = (category) => {
     setSelectedCategory(category);
