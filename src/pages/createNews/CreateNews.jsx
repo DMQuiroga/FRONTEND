@@ -11,29 +11,27 @@ function CreateNews() {
   const [introText, setIntrotext] = useState('');
   const [text, setText] = useState('');
   const [categoryId, setCategoryId] = useState('');
-  const [imagenUrl, setImagenUrl] = useState('');
+  const [image, setImage] = useState(null);
 
   // const imagenUrl = image && BACKEND_URL + '/' + URL.createObjectURL(image);
 
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
+    const data = new FormData();
+    data.append('title', title);
+    data.append('introText', introText);
+    data.append('text', text);
+    data.append('categoryId', categoryId);
+    data.append('ImagenUrl', image);
 
-    if (title && introText && text && categoryId)
-      try {
-        await post('/news', {
-          categoryId,
-          title,
-          introText,
-          text,
-          imagenUrl,
-        });
-        console.log(imagenUrl);
-      } catch (error) {
-        alert(error);
-      } finally {
-        setLoading(false);
-      }
+    try {
+      await post('/news', data);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,11 +66,12 @@ function CreateNews() {
       <label>
         <span>Categoria</span>
         <select
+          defaultValue={``}
           required
           name="select"
           onChange={(e) => setCategoryId(e.target.value)}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Elige categoria...
           </option>
           <option value="1">Actualidad </option>
@@ -92,7 +91,10 @@ function CreateNews() {
         <input
           name="file"
           type="file"
-          onChange={(e) => setImagenUrl(e.target.files[0])}
+          onChange={(e) => {
+            console.log(e.target.files);
+            setImage(e.target.files[0]);
+          }}
         />
       </label>
       <button>Crear noticia</button>

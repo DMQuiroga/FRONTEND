@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
-
+  console.log(noticia);
   const handleDelete = () => {
     Swal.fire({
       title: 'HB News',
@@ -36,15 +36,15 @@ function NewsCard({ noticia, setReloadNews }) {
     });
   };
 
-  let userAvatar = noticia.userImageUrl;
-  if (!userAvatar.startsWith('http')) {
-    userAvatar = `${BACKEND_URL}/uploads/${noticia.userImageUrl}`;
-  }
+  let userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
+  let imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
+  // if (!userAvatar.startsWith('http')) {
+  //   userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
+  // }
 
-  let imagenNoticia = noticia.imagenUrl;
-  if (!imagenNoticia.startsWith('http')) {
-    imagenNoticia = `${BACKEND_URL}/uploads/${noticia.imagenUrl}`;
-  }
+  // if (!imagenNoticia.startsWith('http')) {
+  //   imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
+  // }
 
   return (
     <div className="newscard">
