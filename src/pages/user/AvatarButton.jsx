@@ -9,6 +9,8 @@ import {
   BACKEND_URL,
 } from '../../config';
 
+// BOTÓN DEL HEADER DE USUARIO
+
 const AvatarButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [clickOut, setClickOut] = useState(false);

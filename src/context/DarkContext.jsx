@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 
+// CONTEXTO PARA BOTÓN DÍA Y NOCHE
 const DarkContext = React.createContext();
 
 export const DarkProvider = ({ children }) => {

@@ -1,6 +1,7 @@
 import { useUser } from '../context/UserContext';
 import { BACKEND_URL } from '../config';
 
+// HOOK PARA NUESTRAS PETICIONES:
 function useAuthHttpCall() {
   const [user] = useUser();
   // PETICIÓN GET

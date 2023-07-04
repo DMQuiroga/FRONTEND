@@ -1,6 +1,8 @@
 import useUserMe from '../../hooks/userApi';
 import './UserForm.css';
 
+// BOTÓN DEL HEADER DE USUARIO FUNCIONALIDAD DE OBTENER LA INFORMACIÓN DEL USUARIO LOGUEADO
+
 import {
   NOT_LOGIN_USER_AVATAR,
   DEFAULT_USER_AVATAR,

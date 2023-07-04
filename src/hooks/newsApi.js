@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useAuthHttpCall from './useAuthHttpCall';
 
-// OBTENER LAS NOTICIAS DE CATEGORIAS ORDENADAS POR FECHA
+// OBTENER TODAS LAS NOTICIAS POR CATEGORIAS ORDENADAS POR FECHA
 // OBTENER NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
 export function useNews(selectedCategory, reloadNews) {
   const [news, setNews] = useState([]);
@@ -22,7 +22,7 @@ export function useNews(selectedCategory, reloadNews) {
   return news;
 }
 
-// VOTAR NOTICIAS POSITIVAMENTE
+// VOTAR NOTICIAS POSITIVAMENTE O NEGATIVAMENTE
 export function useVote(newsId, voteType) {
   const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();

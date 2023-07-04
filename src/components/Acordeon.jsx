@@ -1,5 +1,7 @@
 import './Acordeon.css';
 
+// ACORDEON PARA EL FOOTER
+
 function Acordeon({ content }) {
   return (
     <div className={`acordeon ${content ? 'show' : 'hide'}`}>
