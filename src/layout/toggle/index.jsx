@@ -1,6 +1,7 @@
 import { useDark } from '../../context/DarkContext';
 import './style.css';
 
+// BOTÓN NOCHE Y DÍA
 export default function Toggle() {
   const [dark, setDark] = useDark();
   console.log(dark);

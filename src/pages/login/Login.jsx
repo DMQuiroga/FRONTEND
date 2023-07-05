@@ -4,6 +4,8 @@ import { useAuthentication } from '../../hooks/authApi';
 import { useUser } from '../../context/UserContext';
 import './Login.css';
 
+// LOGIN USER
+
 function Login() {
   const [user] = useUser();
   const { login } = useAuthentication();

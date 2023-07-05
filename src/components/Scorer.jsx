@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useVote } from '../hooks/newsApi';
 
+// COMPONENTE PUNTUACIÓN DE NOTICIA
+
 function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
   const [user] = useUser();

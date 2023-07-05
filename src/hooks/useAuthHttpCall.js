@@ -1,6 +1,7 @@
 import { useUser } from '../context/UserContext';
 import { BACKEND_URL } from '../config';
 
+// HOOK PARA NUESTRAS PETICIONES:
 function useAuthHttpCall() {
   const [user] = useUser();
   // PETICIÓN GET
@@ -24,8 +25,7 @@ function useAuthHttpCall() {
     const headers = {};
     if (user) headers.Authorization = `${user.token}`;
     if (!isFormData) headers['Content-Type'] = 'application/json';
-    console.log(BACKEND_URL + url);
-    console.log(body);
+
     const res = await fetch(BACKEND_URL + url, {
       method: 'POST',
       headers,
