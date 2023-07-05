@@ -7,12 +7,14 @@ function AddNewsButton() {
   //   const [form, setForm] = useState(false);
   const newsCreate = useRef(null);
   const closeNewsMenu = (e) => {
-    if (newsCreate.current.contains(e.target)) {
+    if (newsCreate.current && newsCreate.current.contains(e.target)) {
       return;
-    } else setShow(!show);
+    } else {
+      setShow(!show);
+    }
   };
   useEffect(() => {
-    if (newsCreate) {
+    if (newsCreate.current) {
       document.addEventListener('mousedown', closeNewsMenu);
     } else {
       document.removeEventListener('mousedown', closeNewsMenu);
@@ -22,7 +24,6 @@ function AddNewsButton() {
       document.removeEventListener('mousedown', closeNewsMenu);
     };
   }, [show]);
-
   const handleAddNewsButton = () => {
     setShow(!show);
     // setForm(!form);
