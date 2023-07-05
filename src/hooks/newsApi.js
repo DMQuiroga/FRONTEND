@@ -36,4 +36,18 @@ export function useVote(newsId, voteType) {
   return votePositive;
 }
 
-export default { useNews, useVote };
+// VOTAR NOTICIA FAKE
+export function useVoteFake(newsId) {
+  const [, setVotes] = useState([]);
+  const { post } = useAuthHttpCall();
+
+  const voteFake = async (amount) => {
+    let url = `/news/${newsId}/fake`;
+    const data = await post(url, { amount });
+    setVotes(data.data);
+  };
+
+  return voteFake;
+}
+
+export default { useNews, useVote, useVoteFake };

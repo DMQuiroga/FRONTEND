@@ -9,6 +9,7 @@ import {
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
+// import ScorerFake from './ScorerFake';
 
 // DISEÑO DE NOTICIA
 
@@ -96,6 +97,13 @@ function NewsCard({ noticia, setReloadNews }) {
             </h4>
           </span>
         </div>
+        {/* <div className="scorerfake">
+          <ScorerFake
+            className="scorefake"
+            initial={noticia.score}
+            newsId={noticia.id}
+          />
+        </div> */}
         <div className="scorer">
           <Scorer
             className="score"
