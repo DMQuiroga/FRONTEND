@@ -1,63 +1,80 @@
 import { useState } from 'react';
+import useUserMe from '../../hooks/userApi';
 import { useUser } from '../../context/UserContext';
+//import useAuthHttpCall from '../../hooks/useAuthHttpCall';
 import './UserForm.css';
 
 const UserUpdate = () => {
-  const [user, setUser] = useUser();
-  const [updatedUser, setUpdatedUser] = useState({ ...user });
+  const { userMe, updateUser } = useUserMe();
+  const [, saveOrRemoveUser] = useUser();
+  //const { post } = useAuthHttpCall();
+  const [formData, setFormData] = useState({
+    name: userMe.name || '',
+    surname: userMe.surname || '',
+    email: userMe.email || '',
+    password: userMe.password || '',
+    biography: userMe.biography || '',
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    //await post();
     e.preventDefault();
-    setUser(updatedUser);
-    window.alert('¡Cambios realizados con éxito!');
+    updateUser(formData);
+    saveOrRemoveUser(formData);
   };
 
   return (
     <>
       <div className="contenedor">
-        <h2 className="titulo">Actualizar información del Usuario</h2>
+        <h2 className="titulo">Editar Información del Usuario</h2>
         <form className="general" onSubmit={handleSubmit}>
-          <label>Nombres</label>
+          <label>Nombre:</label>
           <input
             type="text"
             name="name"
-            value={updatedUser.name}
+            value={formData.name}
             onChange={handleChange}
           />
 
-          <label>Apellidos</label>
+          <label>Apellidos:</label>
           <input
             type="text"
             name="surname"
-            value={updatedUser.surname}
+            value={formData.surname}
             onChange={handleChange}
           />
 
-          <label>Correo electrónico</label>
+          <label>Correo electrónico:</label>
           <input
             type="email"
             name="email"
-            value={updatedUser.email}
+            value={formData.email}
             onChange={handleChange}
           />
 
-          <label>Biografía</label>
+          <label>Contraseña:</label>
+          <input
+            type="text"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+          <label>Biografía:</label>
           <input
             type="text"
             name="biography"
-            value={updatedUser.biography}
+            value={formData.biography}
             onChange={handleChange}
           />
 
-          <button type="submit">Actualizar</button>
+          <button className="updateuser-button" type="submit">
+            Actualizar
+          </button>
         </form>
       </div>
     </>

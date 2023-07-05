@@ -45,6 +45,8 @@ function useAuthHttpCall() {
     if (user) headers.Authorization = `${user.token}`;
     if (!isFormData) headers['Content-Type'] = 'application/json';
 
+    console.log(BACKEND_URL + url);
+
     const res = await fetch(BACKEND_URL + url, {
       method: 'PUT',
       headers,

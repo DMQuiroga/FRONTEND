@@ -2,19 +2,33 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { useAuthentication } from '../../hooks/authApi';
-import useUserMe from '../../hooks/userApi';
 import './AvatarButton.css';
+import {
+  NOT_LOGIN_USER_AVATAR,
+  DEFAULT_USER_AVATAR,
+  BACKEND_URL,
+} from '../../config';
 
 const AvatarButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [clickOut, setClickOut] = useState(false);
+
   const [user] = useUser();
   const { logout } = useAuthentication();
   const navigate = useNavigate();
-  const userMe = useUserMe();
-  const userImage = user
-    ? userMe?.imagenUrl
-    : 'https://cdn.onlinewebfonts.com/svg/img_322855.png';
+
+  // Determinar la URL para la imagen de avatar
+  let userImage = NOT_LOGIN_USER_AVATAR;
+  if (user) {
+    if (!user.imagenUrl) {
+      userImage = DEFAULT_USER_AVATAR;
+    } else {
+      userImage = user.imagenUrl;
+    }
+  }
+  if (!userImage.startsWith('http')) {
+    userImage = `${BACKEND_URL}/uploads/${userImage}`;
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,7 +78,7 @@ const AvatarButton = () => {
   return (
     <span className="avatar-button">
       <button className="avatar" onClick={toggleMenu}>
-        <img src={userImage} alt="foto_user" />
+        <img className="avatar-userimage" src={userImage} alt="foto_user" />
       </button>
       {isMenuOpen && !clickOut && (
         <div className="menu">
@@ -109,7 +123,7 @@ const AvatarButton = () => {
             )}
             {user && (
               <li onClick={() => handleLogoutClick()}>
-                <a>Logout</a>
+                <Link>Logout</Link>
               </li>
             )}
           </ul>

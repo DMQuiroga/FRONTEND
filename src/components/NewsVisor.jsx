@@ -1,6 +1,15 @@
+import { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
+import { useNews } from '../hooks/newsApi';
 
-function NewsVisor({ news }) {
+function NewsVisor({ selectedCategory }) {
+  const [reloadNews, setReloadNews] = useState(false);
+  const news = useNews(selectedCategory, reloadNews);
+
+  useEffect(() => {
+    setReloadNews(false);
+  }, [reloadNews]);
+
   return (
     <>
       {news.length === 0 ? (
@@ -9,7 +18,7 @@ function NewsVisor({ news }) {
         <ul className="noticia">
           {news.map((noticia) => (
             <li key={noticia.id}>
-              <NewsCard noticia={noticia} />
+              <NewsCard noticia={noticia} setReloadNews={setReloadNews} />
             </li>
           ))}
         </ul>

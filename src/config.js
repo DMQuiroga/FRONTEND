@@ -11,3 +11,11 @@ export const NEWS_CATEGORIES = [
   'Psicología',
   'Estilo de vida',
 ];
+
+export const NOT_LOGIN_USER_AVATAR =
+  'https://cdn.onlinewebfonts.com/svg/img_322855.png';
+export const DEFAULT_USER_AVATAR =
+  'https://static.vecteezy.com/system/resources/previews/020/168/700/large_2x/faceless-male-silhouette-empty-state-avatar-icon-businessman-editable-404-not-found-persona-for-ux-ui-design-cartoon-profile-picture-with-red-dot-colorful-website-mobile-error-user-badge-vector.jpg';
+
+export const DEFAULT_IMAGE_NEWS =
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzmNr8LMqPIEcLNg6KeH6oB0EeCb4KBXzBakxm6W-EnkvTpqqSsql5P8sSEp63bYoW3Q&usqp=CAU';
