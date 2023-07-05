@@ -1,0 +1,78 @@
+.addbtncontainer {
+  height: 50px;
+  width: 50px;
+  font-size: 4rem;
+  background-color: rebeccapurple;
+  color: rgb(252, 248, 248);
+  position: fixed;
+  bottom: 75px;
+  right: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addbutton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.createnewscontainer {
+  height: 60vh;
+  width: 40vh;
+  border-radius: 15px;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 250%;
+  right: -5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.color-change-2x {
+  -webkit-animation: color-change-2x 5s linear infinite alternate both;
+  animation: color-change-2x 5s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
+  }
+}
+
+.newnewstittle,
+.imputfile,
+.imput {
+  text-align: center;
+  text-shadow: 5px rgba(83, 83, 83, 0.74);
+  font-family: 'Agdasima', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.crearbtn {
+  background-color: rgba(59, 17, 175, 0.4);
+  color: white;
+  font-family: 'Agdasima', sans-serif;
+  border-radius: 7px;
+  padding-top: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 3px;
+}

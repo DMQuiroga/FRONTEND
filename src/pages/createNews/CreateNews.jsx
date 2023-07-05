@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
+// import { useHistory } from "react-router";
 // import { BACKEND_URL } from '../../config';
 
 // CREAR NOTICIA
 
-function CreateNews() {
+function CreateNews({ show, setShow }) {
   const { post } = useAuthHttpCall();
   const [, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  // const history = useHistory();
 
   const [title, setTitle] = useState('');
   const [introText, setIntrotext] = useState('');
@@ -26,18 +31,37 @@ function CreateNews() {
 
     try {
       await post('/news', data);
+      setTitle(``);
+      setIntrotext(``);
+      setText(``);
+      setCategoryId(``);
+      setImage(null);
+      setLoading(false);
+      setShow(!show);
+      navigate(0);
+      // if (res.ok) {
+      //   const body = await res.json();
+      //   history.push(`/app/experience/${body.id}`);
+      // }
     } catch (error) {
       alert(error);
     } finally {
-      setLoading(false);
+      // setForm(false);
+
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} id="createnews">
+    <form
+      onSubmit={handleSubmit}
+      className={`createnewscontainer color-change-2x `}
+      id="createnews"
+    >
+      <h2 className="newnewstittle">Nueva noticia</h2>
       <label>
-        <span>Titulo</span>
+        <h3 className="newnewstittle">Titulo</h3>
         <input
+          className="imput"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           name="title"
@@ -45,8 +69,9 @@ function CreateNews() {
         />
       </label>
       <label>
-        <span>Introduccion</span>
+        <h3 className="newnewstittle">Introduccion</h3>
         <input
+          className="imput"
           value={introText}
           onChange={(e) => setIntrotext(e.target.value)}
           name="introText"
@@ -54,8 +79,9 @@ function CreateNews() {
         />
       </label>
       <label>
-        <span>Texto</span>
+        <h3 className="newnewstittle">Texto</h3>
         <input
+          className="imput"
           value={text}
           onChange={(e) => setText(e.target.value)}
           name="text"
@@ -63,8 +89,9 @@ function CreateNews() {
         />
       </label>
       <label>
-        <span>Categoria</span>
+        <h3 className="newnewstittle">Categoria</h3>
         <select
+          className="imput"
           defaultValue={``}
           required
           name="select"
@@ -86,8 +113,9 @@ function CreateNews() {
       </label>
 
       <label>
-        <span>Imagen</span>
+        <h3 className="newnewstittle">Imagen</h3>
         <input
+          className="imputfile"
           name="file"
           type="file"
           onChange={(e) => {
@@ -96,7 +124,7 @@ function CreateNews() {
           }}
         />
       </label>
-      <button>Crear noticia</button>
+      <button className="crearbtn">Crear noticia</button>
     </form>
   );
 }
