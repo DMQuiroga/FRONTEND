@@ -6,6 +6,7 @@ import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
 import AddNewsButton from './addNewsButton/AddNewsButton';
 
+
 function Index() {
   const handleLinkClick = () => {
     window.location.reload();

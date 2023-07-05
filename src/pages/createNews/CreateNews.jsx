@@ -4,6 +4,8 @@ import useAuthHttpCall from '../../hooks/useAuthHttpCall';
 // import { useHistory } from "react-router";
 // import { BACKEND_URL } from '../../config';
 
+// CREAR NOTICIA
+
 function CreateNews({ show, setShow }) {
   const { post } = useAuthHttpCall();
   const [, setLoading] = useState(false);
@@ -45,6 +47,7 @@ function CreateNews({ show, setShow }) {
       alert(error);
     } finally {
       // setForm(false);
+
     }
   };
 
