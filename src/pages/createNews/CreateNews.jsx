@@ -47,7 +47,7 @@ function CreateNews({ show, setShow }) {
     } catch (error) {
       Swal.fire({
         title: 'HB News',
-        text: 'Ha ocurrido un error al crear la noticia: ',
+        text: error,
         icon: 'error',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Cerrar',
