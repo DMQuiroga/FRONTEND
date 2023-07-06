@@ -1,18 +1,21 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 import CreateNews from '../../pages/createNews/CreateNews';
 import './addNewsButton.css';
+
 function AddNewsButton() {
   const [show, setShow] = useState(true);
-  //   const [form, setForm] = useState(false);
   const newsCreate = useRef(null);
-  const closeNewsMenu = (e) => {
-    if (newsCreate.current && newsCreate.current.contains(e.target)) {
-      return;
-    } else {
-      setShow(!show);
-    }
-  };
+  const closeNewsMenu = useCallback(
+    (e) => {
+      if (newsCreate.current && newsCreate.current.contains(e.target)) {
+        return;
+      } else {
+        setShow(!show);
+      }
+    },
+    [show]
+  );
   useEffect(() => {
     if (newsCreate.current) {
       document.addEventListener('mousedown', closeNewsMenu);
@@ -23,10 +26,10 @@ function AddNewsButton() {
     return () => {
       document.removeEventListener('mousedown', closeNewsMenu);
     };
-  }, [show]);
+  }, [closeNewsMenu]);
+
   const handleAddNewsButton = () => {
     setShow(!show);
-    // setForm(!form);
   };
 
   return (
