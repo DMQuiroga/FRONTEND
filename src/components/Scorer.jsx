@@ -30,7 +30,7 @@ function Scorer({ initial, newsId }) {
       } catch (e) {
         Swal.fire({
           title: 'HB News',
-          text: 'Ya se ha votado la noticia',
+          text: e,
           icon: 'error',
           confirmButtonText: 'OK',
         });
