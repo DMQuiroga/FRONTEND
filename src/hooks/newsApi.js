@@ -17,7 +17,7 @@ export function useNews(selectedCategory, reloadNews) {
     };
 
     fetchNews();
-  }, [selectedCategory, reloadNews]);
+  }, [get, selectedCategory, reloadNews]);
 
   return news;
 }

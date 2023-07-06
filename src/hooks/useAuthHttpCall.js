@@ -1,23 +1,27 @@
 import { useUser } from '../context/UserContext';
 import { BACKEND_URL } from '../config';
+import { useCallback } from 'react';
 
 // HOOK PARA NUESTRAS PETICIONES:
 function useAuthHttpCall() {
   const [user] = useUser();
   // PETICIÓN GET
-  const get = async (url) => {
-    const headers = {};
-    if (user) headers.Authorization = `${user.token}`;
+  const get = useCallback(
+    async (url) => {
+      const headers = {};
+      if (user) headers.Authorization = `${user.token}`;
 
-    const res = await fetch(BACKEND_URL + url, {
-      headers,
-    });
-    const responseBody = await res.json();
-    if (!res.ok) {
-      throw new Error(res.status + ':' + responseBody.error);
-    }
-    return responseBody;
-  };
+      const res = await fetch(BACKEND_URL + url, {
+        headers,
+      });
+      const responseBody = await res.json();
+      if (!res.ok) {
+        throw new Error(res.status + ':' + responseBody.error);
+      }
+      return responseBody;
+    },
+    [user]
+  );
   // PETICIÓN POST
   const post = async (url, body) => {
     const isFormData = body instanceof FormData;
