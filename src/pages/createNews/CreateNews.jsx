@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
+import Swal from 'sweetalert2';
 // import { useHistory } from "react-router";
 // import { BACKEND_URL } from '../../config';
 
@@ -44,10 +45,15 @@ function CreateNews({ show, setShow }) {
       //   history.push(`/app/experience/${body.id}`);
       // }
     } catch (error) {
-      alert(error);
+      Swal.fire({
+        title: 'HB News',
+        text: 'Ha ocurrido un error al crear la noticia: ',
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Cerrar',
+      });
     } finally {
       // setForm(false);
-
     }
   };
 
@@ -60,38 +66,44 @@ function CreateNews({ show, setShow }) {
       <h2 className="newnewstittle">Nueva noticia</h2>
       <label>
         <h3 className="newnewstittle">Titulo</h3>
-        <input
-          className="imput"
+        <textarea
+          className="input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           name="title"
           required
+          rows="1"
+          cols="30"
         />
       </label>
       <label>
         <h3 className="newnewstittle">Introduccion</h3>
-        <input
-          className="imput"
+        <textarea
+          className="input"
           value={introText}
           onChange={(e) => setIntrotext(e.target.value)}
           name="introText"
           required
+          rows="2"
+          cols="30"
         />
       </label>
       <label>
         <h3 className="newnewstittle">Texto</h3>
-        <input
-          className="imput"
+        <textarea
+          className="input input-textarea"
           value={text}
           onChange={(e) => setText(e.target.value)}
           name="text"
           required
+          rows="8"
+          cols="30"
         />
       </label>
       <label>
         <h3 className="newnewstittle">Categoria</h3>
         <select
-          className="imput"
+          className="input"
           defaultValue={``}
           required
           name="select"
@@ -115,7 +127,7 @@ function CreateNews({ show, setShow }) {
       <label>
         <h3 className="newnewstittle">Imagen</h3>
         <input
-          className="imputfile"
+          className="inputfile"
           name="file"
           type="file"
           onChange={(e) => {
