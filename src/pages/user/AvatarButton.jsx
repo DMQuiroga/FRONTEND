@@ -9,8 +9,6 @@ import {
   BACKEND_URL,
 } from '../../config';
 
-// BOTÓN DEL HEADER DE USUARIO
-
 const AvatarButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [clickOut, setClickOut] = useState(false);
@@ -80,7 +78,7 @@ const AvatarButton = () => {
   return (
     <span className="avatar-button">
       <button className="avatar" onClick={toggleMenu}>
-        <img src={userImage} alt="foto_user" />
+        <img className="avatar-userimage" src={userImage} alt="foto_user" />
       </button>
       {isMenuOpen && !clickOut && (
         <div className="menu">
@@ -125,7 +123,7 @@ const AvatarButton = () => {
             )}
             {user && (
               <li onClick={() => handleLogoutClick()}>
-                <a>Logout</a>
+                <Link>Logout</Link>
               </li>
             )}
           </ul>

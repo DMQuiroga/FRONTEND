@@ -1,10 +1,20 @@
 div.contenedor {
   margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-template-rows: 1fr, 1fr;
+  padding-left: 15px;
 }
 
 form.general {
   display: flex;
   flex-direction: column;
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+h2.encabezado-titulo {
+  grid-column: 1/2;
 }
 
 form.general input {
@@ -12,6 +22,7 @@ form.general input {
   border-radius: 5px;
   max-width: 300px;
   padding: 10px 0;
+  grid-column: 1/2;
 }
 
 form.general label {
@@ -19,7 +30,70 @@ form.general label {
 }
 
 img.imagen-usuario {
-  border: 1px solid red;
-  width: 100px;
-  height: 100px;
+  object-fit: cover;
+  border: 2px solid #8c0ee6d7;
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  margin-top: 35px;
+}
+
+.updateuser-button {
+  cursor: pointer;
+  background-color: #3f026b;
+  margin-top: 15px;
+  max-width: 280px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white;
+
+  -webkit-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+
+  border-radius: 0px 0px 124px 0px;
+  -moz-border-radius: 0px 0px 124px 0px;
+  -webkit-border-radius: 0px 0px 124px 0px;
+  border: 0px solid #000000;
+}
+
+.updateuser-button:hover {
+  background-color: rgb(51, 33, 153);
+  animation: vibrateAnimation 0.5s ease 0s 1 normal forwards;
+}
+
+.updateuser-button:active {
+  background-color: rgb(95, 53, 19);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@keyframes vibrateAnimation {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }

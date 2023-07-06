@@ -1,25 +1,22 @@
 import useUserMe from '../../hooks/userApi';
 import './UserForm.css';
 
-// BOTÓN DEL HEADER DE USUARIO FUNCIONALIDAD DE OBTENER LA INFORMACIÓN DEL USUARIO LOGUEADO
-
 import {
   NOT_LOGIN_USER_AVATAR,
   DEFAULT_USER_AVATAR,
   BACKEND_URL,
 } from '../../config';
 
-const UserForm = () => {
+const UserFormPrueba = () => {
   const user = useUserMe();
-  //const formattedDate = user.createdAt ? user.createdAt.split(' ')[0] : '';
 
   // Determinar la URL para la imagen de avatar
   let userImage = NOT_LOGIN_USER_AVATAR;
-  if (user) {
-    if (!user.imagenUrl) {
+  if (user.userMe) {
+    if (!user.userMe.imagenUrl) {
       userImage = DEFAULT_USER_AVATAR;
     } else {
-      userImage = user.imagenUrl;
+      userImage = user.userMe.imagenUrl;
     }
   }
   if (!userImage.startsWith('http')) {
@@ -29,32 +26,29 @@ const UserForm = () => {
   return (
     <>
       <div className="contenedor">
-        <h2 className="titulo">Información del Usuario</h2>
+        <h2 className="encabezado-titulo">Información del Usuario</h2>
         <form className="general">
           <label>Nombre:</label>
-          <input type="text" value={user.name} readOnly />
+          <input type="text" value={user.userMe.name || ''} readOnly />
 
           <label>Apellidos:</label>
-          <input type="text" value={user.surname} readOnly />
+          <input type="text" value={user.userMe.surname || ''} readOnly />
 
           <label>Correo electrónico:</label>
-          <input type="email" value={user.email} readOnly />
+          <input type="email" value={user.userMe.email || ''} readOnly />
 
           <label>Biografía:</label>
-          <input type="text" value={user.biography} readOnly />
+          <input type="text" value={user.userMe.biography || ''} readOnly />
 
-          {/* <label>Cuenta activa desde</label>
-          <input type="date" value={formattedDate} readOnly /> */}
+          <label>ID</label>
+          <input type="text" value={user.userMe.id || ''} readOnly />
 
-          <div className="imagen-usuario">
-            <div className="newsCard-left">
-              <img className="imagen" src={userImage} alt="" />
-            </div>
-          </div>
+          <div className="imagen-usuario"></div>
         </form>
+        <img className="imagen-usuario" src={userImage} alt="" />
       </div>
     </>
   );
 };
 
-export default UserForm;
+export default UserFormPrueba;
