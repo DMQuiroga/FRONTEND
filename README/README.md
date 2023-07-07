@@ -6,6 +6,8 @@ TO DO NO PRIORITARIO:
 5- Hora fecha al publicar la noticia correcta
 6- Programar el noche y día (Tenemos día faltaría noche)
 7- Stefano quiere que en la initdb del BACKEND se inserte todo.
+8-
+9-
 
 # PRIORIDADES!!!!!!!:
 
