@@ -51,6 +51,7 @@ const UserProfile = () => {
     <>
       <div className="contenedor">
         <h2 className="encabezado-titulo">Perfil de Usuario</h2>
+        {/* <img className="user-avatar-image" src={dataUser.imagenUrl} alt="" /> */}
         <form className="general" onSubmit={handleUpdateUser}>
           <label>Nombre</label>
           <input

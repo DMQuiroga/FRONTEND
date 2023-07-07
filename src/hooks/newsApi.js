@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useAuthHttpCall from './useAuthHttpCall';
+import { useUser } from '../context/UserContext';
 
 // OBTENER TODAS LAS NOTICIAS POR CATEGORIAS ORDENADAS POR FECHA
 // OBTENER NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
@@ -11,7 +12,6 @@ export function useNews(selectedCategory, reloadNews) {
     const fetchNews = async () => {
       let url = '/today-news';
       if (selectedCategory !== null) url = `/category-news/${selectedCategory}`;
-
       const data = await get(url);
       setNews(data.data);
     };
@@ -20,6 +20,29 @@ export function useNews(selectedCategory, reloadNews) {
   }, [get, selectedCategory, reloadNews]);
 
   return news;
+}
+
+export function UserIDNews() {
+  const user = useUser();
+  const [userNews, setUserNews] = useState([]);
+  const { get } = useAuthHttpCall();
+  const userId = user[0].id;
+  console.log(userId);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      let url = `/news/${userId}`; // Construir la URL con el ID del usuario
+      console.log(url);
+
+      const data = await get(url);
+      setUserNews(data.data);
+      console.log(data);
+    };
+
+    fetchNews();
+  }, []); // Agregar userId como dependencia para que se ejecute cuando cambie
+
+  return userNews;
 }
 
 // VOTAR NOTICIAS POSITIVAMENTE O NEGATIVAMENTE
@@ -50,4 +73,4 @@ export function useVoteFake(newsId) {
   return voteFake;
 }
 
-export default { useNews, useVote, useVoteFake };
+export default { useNews, useVote, useVoteFake, UserIDNews };

@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 // HOOK PARA NUESTRAS PETICIONES:
 function useAuthHttpCall() {
   const [user] = useUser();
+
   // PETICIÓN GET
   const get = useCallback(
     async (url) => {
@@ -18,6 +19,7 @@ function useAuthHttpCall() {
       if (!res.ok) {
         throw new Error(res.status + ':' + responseBody.error);
       }
+
       return responseBody;
     },
     [user]
