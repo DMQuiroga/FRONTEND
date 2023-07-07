@@ -2,6 +2,9 @@ import { useState } from 'react';
 import './Index.css';
 import Acordeon from '../components/Acordeon';
 
+// FOOTER
+
+// IMPORTAMOS TEXTOS TIPO JSON PARA EL FOOTER
 import about from '../assets/about.json';
 import contact from '../assets/contact.json';
 import terms from '../assets/terms.json';

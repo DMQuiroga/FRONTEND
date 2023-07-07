@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useVote } from '../hooks/newsApi';
+import Swal from 'sweetalert2';
+
+// COMPONENTE PUNTUACIÓN DE NOTICIA
 
 function Scorer({ initial, newsId }) {
   const [valor, setValor] = useState(initial);
@@ -25,7 +28,12 @@ function Scorer({ initial, newsId }) {
           setValor(valor - 1);
         }
       } catch (e) {
-        alert(e);
+        Swal.fire({
+          title: 'HB News',
+          text: e,
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
       }
     }
   };

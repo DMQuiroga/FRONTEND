@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
 import { useNews } from '../hooks/newsApi';
 
+// VISUALIZADOR DE NOTICIA
+
 function NewsVisor({ selectedCategory }) {
   const [reloadNews, setReloadNews] = useState(false);
   const news = useNews(selectedCategory, reloadNews);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useAuthHttpCall from './useAuthHttpCall';
 
-// OBTENER LAS NOTICIAS DE CATEGORIAS ORDENADAS POR FECHA
+// OBTENER TODAS LAS NOTICIAS POR CATEGORIAS ORDENADAS POR FECHA
 // OBTENER NOTICIAS DEL DÍA ORDENADAS POR PUNTUACIÓN
 export function useNews(selectedCategory, reloadNews) {
   const [news, setNews] = useState([]);
@@ -17,12 +17,12 @@ export function useNews(selectedCategory, reloadNews) {
     };
 
     fetchNews();
-  }, [selectedCategory, reloadNews]);
+  }, [get, selectedCategory, reloadNews]);
 
   return news;
 }
 
-// VOTAR NOTICIAS POSITIVAMENTE
+// VOTAR NOTICIAS POSITIVAMENTE O NEGATIVAMENTE
 export function useVote(newsId, voteType) {
   const [, setVotes] = useState([]);
   const { post } = useAuthHttpCall();
@@ -36,4 +36,18 @@ export function useVote(newsId, voteType) {
   return votePositive;
 }
 
-export default { useNews, useVote };
+// VOTAR NOTICIA FAKE
+export function useVoteFake(newsId) {
+  const [, setVotes] = useState([]);
+  const { post } = useAuthHttpCall();
+
+  const voteFake = async (amount) => {
+    let url = `/news/${newsId}/fake`;
+    const data = await post(url, { amount });
+    setVotes(data.data);
+  };
+
+  return voteFake;
+}
+
+export default { useNews, useVote, useVoteFake };

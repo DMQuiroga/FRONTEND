@@ -9,6 +9,9 @@ import {
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
+// import ScorerFake from './ScorerFake';
+
+// DISEÑO DE NOTICIA
 
 function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
@@ -51,7 +54,7 @@ function NewsCard({ noticia, setReloadNews }) {
   let userAvatar = noticia.userImageUrl;
   // Verificamos si la URL existe y no comienza con 'https'
   if (userAvatar && !userAvatar.startsWith('https')) {
-    // Si no comienza con 'https', agregamos la imagen del nuestro Backend de archivo uploads
+    // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
     userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
     // Si no hay URL de imagen de usuario en la noticia
   } else if (!userAvatar) {
@@ -69,7 +72,7 @@ function NewsCard({ noticia, setReloadNews }) {
   let imagenNoticia = noticia.imagenUrl;
   // Verificamos si la URL de la imagen de la noticia existe y no comienza con 'https'
   if (imagenNoticia && !imagenNoticia.startsWith('https')) {
-    // Si no comienza con 'https', agregamos la imagen del nuestro Backend de archivo uploads
+    // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
     imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
   } else if (!imagenNoticia) {
     // Obtener la imagen de la noticia del backend si la URL local es nula
@@ -94,6 +97,13 @@ function NewsCard({ noticia, setReloadNews }) {
             </h4>
           </span>
         </div>
+        {/* <div className="scorerfake">
+          <ScorerFake
+            className="scorefake"
+            initial={noticia.score}
+            newsId={noticia.id}
+          />
+        </div> */}
         <div className="scorer">
           <Scorer
             className="score"

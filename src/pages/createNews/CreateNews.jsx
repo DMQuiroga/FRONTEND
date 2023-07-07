@@ -1,11 +1,18 @@
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
+import Swal from 'sweetalert2';
+// import { useHistory } from "react-router";
 // import { BACKEND_URL } from '../../config';
 
-function CreateNews() {
+// CREAR NOTICIA
+
+function CreateNews({ show, setShow }) {
   const { post } = useAuthHttpCall();
   const [, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  // const history = useHistory();
 
   const [title, setTitle] = useState('');
   const [introText, setIntrotext] = useState('');
@@ -25,45 +32,78 @@ function CreateNews() {
 
     try {
       await post('/news', data);
-    } catch (error) {
-      alert(error);
-    } finally {
+      setTitle(``);
+      setIntrotext(``);
+      setText(``);
+      setCategoryId(``);
+      setImage(null);
       setLoading(false);
+      setShow(!show);
+      navigate(0);
+      // if (res.ok) {
+      //   const body = await res.json();
+      //   history.push(`/app/experience/${body.id}`);
+      // }
+    } catch (error) {
+      Swal.fire({
+        title: 'HB News',
+        text: error,
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Cerrar',
+      });
+    } finally {
+      // setForm(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} id="createnews">
+    <form
+      onSubmit={handleSubmit}
+      className={`createnewscontainer color-change-2x `}
+      id="createnews"
+    >
+      <h2 className="newnewstittle">Nueva noticia</h2>
       <label>
-        <span>Titulo</span>
-        <input
+        <h3 className="newnewstittle">Titulo</h3>
+        <textarea
+          className="input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           name="title"
           required
+          rows="1"
+          cols="30"
         />
       </label>
       <label>
-        <span>Introduccion</span>
-        <input
+        <h3 className="newnewstittle">Introduccion</h3>
+        <textarea
+          className="input"
           value={introText}
           onChange={(e) => setIntrotext(e.target.value)}
           name="introText"
           required
+          rows="2"
+          cols="30"
         />
       </label>
       <label>
-        <span>Texto</span>
-        <input
+        <h3 className="newnewstittle">Texto</h3>
+        <textarea
+          className="input input-textarea"
           value={text}
           onChange={(e) => setText(e.target.value)}
           name="text"
           required
+          rows="8"
+          cols="30"
         />
       </label>
       <label>
-        <span>Categoria</span>
+        <h3 className="newnewstittle">Categoria</h3>
         <select
+          className="input"
           defaultValue={``}
           required
           name="select"
@@ -85,8 +125,9 @@ function CreateNews() {
       </label>
 
       <label>
-        <span>Imagen</span>
+        <h3 className="newnewstittle">Imagen</h3>
         <input
+          className="inputfile"
           name="file"
           type="file"
           onChange={(e) => {
@@ -95,7 +136,7 @@ function CreateNews() {
           }}
         />
       </label>
-      <button>Crear noticia</button>
+      <button className="crearbtn">Crear noticia</button>
     </form>
   );
 }

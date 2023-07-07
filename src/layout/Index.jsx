@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
-import CreateNews from '../pages/createNews/CreateNews';
+import AddNewsButton from './addNewsButton/AddNewsButton';
 
 function Index() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function Index() {
         </div>
       </header>
       <main className="content">
-        <CreateNews />
+        <AddNewsButton />
         <Outlet />
       </main>
       <Footer />
