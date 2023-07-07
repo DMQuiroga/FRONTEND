@@ -42,8 +42,8 @@ function useAuthHttpCall() {
     }
     return responseBody;
   };
-  // PETICIÓN PUT
-  const put = async (url, body) => {
+  // PETICION PUT
+  const put = async (url, body, user) => {
     const isFormData = body instanceof FormData;
 
     const headers = {};
@@ -62,6 +62,7 @@ function useAuthHttpCall() {
     }
     return responseBody;
   };
+
   // PETICIÓN DELETE
   const del = async (url) => {
     const headers = {};

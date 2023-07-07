@@ -17,10 +17,13 @@ h2.encabezado-titulo {
   grid-column: 1/2;
 }
 
-form.general input {
+form.general input,
+textarea {
   border: 1px solid gray;
   border-radius: 5px;
+  min-width: 300px;
   max-width: 300px;
+  max-height: 100px;
   padding: 10px 0;
   grid-column: 1/2;
 }

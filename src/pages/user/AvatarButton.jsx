@@ -18,6 +18,7 @@ const AvatarButton = () => {
   const navigate = useNavigate();
 
   // Determinar la URL para la imagen de avatar
+
   let userImage = NOT_LOGIN_USER_AVATAR;
   if (user) {
     if (!user.imagenUrl) {
@@ -109,16 +110,12 @@ const AvatarButton = () => {
                 </Link>
               </li>
             )}
+
             {user && (
               <li>
-                <Link to="/userupdate" onClick={() => handleMenuItemClick()}>
-                  Actualizar información del Usuario
+                <Link to="usernews" onClick={() => handleMenuItemClick()}>
+                  Noticias del Usuario
                 </Link>
-              </li>
-            )}
-            {user && (
-              <li onClick={() => handleMenuItemClick()}>
-                Noticias del Usuario
               </li>
             )}
             {user && (
