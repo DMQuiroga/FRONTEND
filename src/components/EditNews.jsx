@@ -54,7 +54,7 @@ function EditNews({ noticia, show, setShow }) {
   return (
     <form
       onSubmit={handleEdit}
-      className={`createnewscontainer color-change-2x `}
+      className={`editnewscontainer color-change-2x `}
       id="editnews"
     >
       <h2 className="newnewstittle">Nueva noticia</h2>

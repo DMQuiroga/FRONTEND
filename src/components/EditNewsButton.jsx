@@ -15,7 +15,7 @@ function EditNewsButton(noticia) {
     } else setShow(!show);
   };
   useEffect(() => {
-    if (newsEdit) {
+    if (newsEdit.current) {
       document.addEventListener('mousedown', closeNewsMenu);
     } else {
       document.removeEventListener('mousedown', closeNewsMenu);
@@ -24,7 +24,7 @@ function EditNewsButton(noticia) {
     return () => {
       document.removeEventListener('mousedown', closeNewsMenu);
     };
-  }, [show]);
+  }, [newsEdit.current]);
 
   const handleEditNewsButton = () => {
     setShow(!show);
