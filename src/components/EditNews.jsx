@@ -1,15 +1,11 @@
 import { useUser } from '../context/UserContext';
-
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import useAuthHttpCall from '../hooks/useAuthHttpCall';
 import Swal from 'sweetalert2';
 
-// import useAuthHttpCall from '../../hooks/useAuthHttpCall';
-
 function EditNews({ noticia, show, setShow }) {
   const [user] = useUser();
-  //   const { put } = useAuthHttpCall();
   const { put } = useAuthHttpCall();
   const [, setLoading] = useState(false);
   const [title, setTitle] = useState(noticia.noticia.title);
@@ -17,6 +13,7 @@ function EditNews({ noticia, show, setShow }) {
   const [text, setText] = useState(noticia.noticia.text);
   const [categoryId, setCategoryId] = useState(noticia.noticia.categoryId);
   const [image, setImage] = useState(null);
+  const [navigate, setNavigate] = useState(false); // Nuevo estado para la navegación
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -37,7 +34,7 @@ function EditNews({ noticia, show, setShow }) {
       setImage(null);
       setLoading(false);
       setShow(!show);
-      Navigate(0);
+      setNavigate(true); // Establece el estado navigate en true después de que la petición se haya completado
     } catch (error) {
       Swal.fire({
         title: 'HB News',
@@ -50,6 +47,10 @@ function EditNews({ noticia, show, setShow }) {
       // setForm(false);
     }
   };
+
+  if (navigate) {
+    return <Navigate to="/route-to-navigate-to" replace />; // Cambia "/route-to-navigate-to" por la ruta a la que quieres navegar
+  }
 
   return (
     <form
@@ -130,7 +131,7 @@ function EditNews({ noticia, show, setShow }) {
           }}
         />
       </label>
-      <button className="crearbtn">Confirmar edicion</button>
+      <button className="crearbtn">Confirmar ✔️</button>
     </form>
   );
 }
