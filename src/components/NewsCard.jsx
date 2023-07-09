@@ -73,14 +73,18 @@ function NewsCard({ noticia, setReloadNews }) {
   }
 
   return (
-    <div className="newscard">
+    <div className={`newscard ${dark}`}>
       <div className="userinfocard">
         <div>
           {userAvatar ? (
-            <img className="userimage" src={userAvatar} alt="Avatar" />
+            <img
+              className={`userimage plusone ${dark}`}
+              src={userAvatar}
+              alt="Avatar"
+            />
           ) : null}
           <span className="usercreador">
-            <h4 className="username">
+            <h4 className={`username ${dark}`}>
               {noticia.name} {noticia.surname}
             </h4>
           </span>
@@ -113,7 +117,7 @@ function NewsCard({ noticia, setReloadNews }) {
           <p className="text">{noticia.text}</p>
         </div>
       </div>
-      <p className="metadata">
+      <p className={`metadata ${dark}`}>
         Fecha de publicación:{' '}
         {new Date(noticia.publishDate).toLocaleDateString('es-ES', {
           year: 'numeric',
@@ -126,7 +130,7 @@ function NewsCard({ noticia, setReloadNews }) {
         {NEWS_CATEGORIES[noticia.categoryId - 1]}
         {user && user.id === noticia.userId ? (
           <>
-            <button className="animated" onClick={handleDelete}>
+            <button className={`animated voter ${dark}`} onClick={handleDelete}>
               {' '}
               Borrar{' '}
             </button>

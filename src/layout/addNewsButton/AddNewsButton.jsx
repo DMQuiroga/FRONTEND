@@ -1,23 +1,20 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import CreateNews from '../../pages/createNews/CreateNews';
 import './addNewsButton.css';
-
+import { useDark } from '../../context/DarkContext';
 function AddNewsButton() {
   const [show, setShow] = useState(true);
+  //   const [form, setForm] = useState(false);
   const newsCreate = useRef(null);
-  const closeNewsMenu = useCallback(
-    (e) => {
-      if (newsCreate.current && newsCreate.current.contains(e.target)) {
-        return;
-      } else {
-        setShow(!show);
-      }
-    },
-    [show]
-  );
+  const [dark] = useDark();
+  const closeNewsMenu = (e) => {
+    if (newsCreate.current.contains(e.target)) {
+      return;
+    } else setShow(!show);
+  };
   useEffect(() => {
-    if (newsCreate.current) {
+    if (newsCreate) {
       document.addEventListener('mousedown', closeNewsMenu);
     } else {
       document.removeEventListener('mousedown', closeNewsMenu);
@@ -26,14 +23,15 @@ function AddNewsButton() {
     return () => {
       document.removeEventListener('mousedown', closeNewsMenu);
     };
-  }, [closeNewsMenu]);
+  }, [show]);
 
   const handleAddNewsButton = () => {
     setShow(!show);
+    // setForm(!form);
   };
 
   return (
-    <section className="addbtncontainer">
+    <section className={`addbtncontainer ${dark}`}>
       <div
         onClick={handleAddNewsButton}
         className={`addbutton" ${show ? 'show' : 'hide'}`}

@@ -8,10 +8,12 @@ import Acordeon from '../components/Acordeon';
 import about from '../assets/about.json';
 import contact from '../assets/contact.json';
 import terms from '../assets/terms.json';
+import { useDark } from '../context/DarkContext';
 
 function Footer() {
   const [acordeonContent, setAcordeonContent] = useState(false);
   const [acordeonType, setAcordeonType] = useState(false);
+  const [dark] = useDark();
 
   const openAcordeon = function (type, content) {
     if (acordeonContent && acordeonType === type) {
@@ -24,24 +26,24 @@ function Footer() {
 
   return (
     <footer>
-      <section className="content-footer">
+      <section className={`content-footer ${dark}`}>
         <Acordeon content={acordeonContent}></Acordeon>
         {!acordeonContent ? (
           <>
             <button
-              className="animated"
+              className={`animated footer ${dark}`}
               onClick={() => openAcordeon('about-us', about)}
             >
               About us 🌐
             </button>
             <button
-              className="animated"
+              className={`animated footer ${dark}`}
               onClick={() => openAcordeon('contact', contact)}
             >
               Contact 📞
             </button>
             <button
-              className="animated"
+              className={`animated footer ${dark}`}
               onClick={() => openAcordeon('t-and-c', terms)}
             >
               T&C 🛡️

@@ -8,10 +8,12 @@ import {
   DEFAULT_USER_AVATAR,
   BACKEND_URL,
 } from '../../config';
+import { useDark } from '../../context/DarkContext';
 
 const AvatarButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [clickOut, setClickOut] = useState(false);
+  const [dark] = useDark();
 
   const [user] = useUser();
   const { logout } = useAuthentication();
@@ -77,17 +79,17 @@ const AvatarButton = () => {
   }, [isMenuOpen]);
 
   return (
-    <span className="avatar-button">
+    <span className={`avatar-button ${dark}`}>
       <button className="avatar" onClick={toggleMenu}>
         <img className="avatar-userimage" src={userImage} alt="foto_user" />
       </button>
       {isMenuOpen && !clickOut && (
-        <div className="menu">
+        <div className={`menu ${dark}`}>
           <ul className="menu-options">
             <li>
               {user ? (
                 <p>
-                  <span className="userName">{user.name}</span>
+                  <span className={`userName ${dark}`}>{user.name}</span>
                 </p>
               ) : (
                 <>
