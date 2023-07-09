@@ -4,6 +4,10 @@
   box-sizing: content-box;
 }
 
+.div-contenedor-componente-hijo {
+  display: none;
+}
+
 span.avatar-button {
   position: relative;
 }

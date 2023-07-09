@@ -6,6 +6,8 @@ import { useUser } from '../context/UserContext';
 import EditNewsButton from '../components/EditNewsButton';
 import { useDark } from '../context/DarkContext';
 import Swal from 'sweetalert2';
+/* import { ImageContext } from '../context/ImageContext';
+import { useContext } from 'react'; */
 // import ScorerFake from './ScorerFake';
 
 // DISEÑO DE NOTICIA
@@ -49,6 +51,7 @@ function NewsCard({ noticia, setReloadNews }) {
   // _______________________________________________
   // FOTO AVATAR USUARIO EN PUBLICACIÓN NOTICIA:
   // 1º Obtenemos la URL de la imagen del avatar del usuario de la noticia
+  //let avatarPhoto = userUpdateImage;
   let userAvatar = noticia.userImageUrl;
   // Verificamos si la URL existe y no comienza con 'https'
   if (userAvatar && !userAvatar.startsWith('https')) {

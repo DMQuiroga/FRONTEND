@@ -1,6 +1,6 @@
 import { useUser } from '../context/UserContext';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useAuthHttpCall from '../hooks/useAuthHttpCall';
 import Swal from 'sweetalert2';
 
@@ -13,7 +13,7 @@ function EditNews({ noticia, show, setShow }) {
   const [text, setText] = useState(noticia.noticia.text);
   const [categoryId, setCategoryId] = useState(noticia.noticia.categoryId);
   const [image, setImage] = useState(null);
-  const [navigate, setNavigate] = useState(false); // Nuevo estado para la navegación
+  const navigate = useNavigate();
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ function EditNews({ noticia, show, setShow }) {
       setImage(null);
       setLoading(false);
       setShow(!show);
-      setNavigate(true); // Establece el estado navigate en true después de que la petición se haya completado
+      navigate(0);
     } catch (error) {
       Swal.fire({
         title: 'HB News',
@@ -47,10 +47,6 @@ function EditNews({ noticia, show, setShow }) {
       // setForm(false);
     }
   };
-
-  if (navigate) {
-    return <Navigate to="/route-to-navigate-to" replace />; // Cambia "/route-to-navigate-to" por la ruta a la que quieres navegar
-  }
 
   return (
     <form

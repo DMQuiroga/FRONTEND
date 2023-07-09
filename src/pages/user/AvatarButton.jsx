@@ -27,8 +27,8 @@ const AvatarButton = () => {
       userImage = user.imagenUrl;
     }
   }
-  if (!userImage.startsWith('http')) {
-    userImage = `${BACKEND_URL}/uploads/${userImage}`;
+  if (userImage && !userImage.startsWith('http')) {
+    userImage = `${BACKEND_URL}/${user.imagenUrl}`;
   }
 
   const toggleMenu = () => {
