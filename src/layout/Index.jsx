@@ -1,27 +1,21 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './Index.css';
 import Footer from './Footer';
 
 import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
 import AddNewsButton from './addNewsButton/AddNewsButton';
-import UserProfile from '../pages/user/UserProfile';
 
-function Index({ userUpdateImage }) {
-  const navigate = useNavigate();
-  const handleLinkClick = () => {
-    navigate('/');
-  };
-
+function Index() {
   return (
     <>
       <header className="header">
         <div className="header-content">
-          <Link onClick={() => handleLinkClick()}>
+          <Link reloadDocument to="/">
             <h1>HB NEWS</h1>
           </Link>
 
-          <AvatarButton userUpdateImage={userUpdateImage} />
+          <AvatarButton />
 
           <span className="toggle-button">
             <Toggle />

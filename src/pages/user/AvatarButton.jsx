@@ -3,54 +3,33 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { useAuthentication } from '../../hooks/authApi';
 import './AvatarButton.css';
-import { BACKEND_URL } from '../../config';
-
-/* import {
+import {
   NOT_LOGIN_USER_AVATAR,
   DEFAULT_USER_AVATAR,
   BACKEND_URL,
 } from '../../config';
- */
-const AvatarButton = ({ userUpdateImage }) => {
+
+const AvatarButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [clickOut, setClickOut] = useState(false);
-  const [user] = useUser();
 
+  const [user] = useUser();
   const { logout } = useAuthentication();
   const navigate = useNavigate();
 
-  let avatarPhoto = userUpdateImage;
-
-  // Verificamos si la URL existe y no comienza con 'https'
-  if (avatarPhoto && !avatarPhoto.startsWith('https')) {
-    // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
-    avatarPhoto = `${BACKEND_URL}/${userUpdateImage}`;
-    // Si no hay URL de imagen de usuario en la noticia
-  } else if (!avatarPhoto) {
-    // Se construye una URL de avatar por defecto utilizando el BACKEND_URL y el ID de usuario de la noticia
-    avatarPhoto = `${BACKEND_URL}/avatar/${userUpdateImage}`;
-    // Verificamos si la URL del avatar por defecto tampoco comienza con 'https'
-    if (!avatarPhoto.startsWith('https')) {
-      // Asignamos la imagen de avatar por defecto = DEFAULT_USER_AVATAR
-      avatarPhoto = userUpdateImage;
-    }
-  }
-
   // Determinar la URL para la imagen de avatar
 
-  /* let userImage = NOT_LOGIN_USER_AVATAR;
-  
+  let userImage = NOT_LOGIN_USER_AVATAR;
   if (user) {
-    if (!avatarImage) {
+    if (!user.imagenUrl) {
       userImage = DEFAULT_USER_AVATAR;
     } else {
-      userImage = avatarImage;
+      userImage = user.imagenUrl;
     }
   }
-  
-  if (!userImage.startsWith('http')) {
-    userImage = `${BACKEND_URL}/uploads/${userImage}`;
-  } */
+  if (userImage && !userImage.startsWith('http')) {
+    userImage = `${BACKEND_URL}/${user.imagenUrl}`;
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -100,9 +79,7 @@ const AvatarButton = ({ userUpdateImage }) => {
   return (
     <span className="avatar-button">
       <button className="avatar" onClick={toggleMenu}>
-        {user && (
-          <img className="avatar-userimage" src={avatarPhoto} alt="foto_user" />
-        )}
+        <img className="avatar-userimage" src={userImage} alt="foto_user" />
       </button>
       {isMenuOpen && !clickOut && (
         <div className="menu">

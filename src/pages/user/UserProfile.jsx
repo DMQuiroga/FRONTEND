@@ -1,17 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useUser } from '../../context/UserContext';
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
 import { BACKEND_URL } from '../../config';
-
 import './UserProfile.css';
-import AvatarButton from './AvatarButton';
+import { ImageContext } from '../../context/ImageContext';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
   const [user, saveOrRemoveUser] = useUser();
+  console.log(user);
   const [dataUser, setDataUser] = useState(user || {});
+  console.log(dataUser);
+  const { updateUserImage } = useContext(ImageContext);
   const { put } = useAuthHttpCall();
   const [userImage, setUserImage] = useState(dataUser.imagenUrl);
   const [imageKey, setImageKey] = useState(Date.now()); // Nuevo estado para el atributo key
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    updateUserImage(dataUser.imagenUrl);
+  }, [updateUserImage, dataUser.imagenUrl]);
 
   useEffect(() => {
     setUserImage(dataUser.imagenUrl);
@@ -50,6 +58,7 @@ const UserProfile = () => {
       setUserImage(updatedUser.data.updateAvatarPhoto);
       console.log(newInfo);
       saveOrRemoveUser(newInfo);
+      navigate(0);
       setImageKey(Date.now()); // Actualizar el atributo key
     } catch (error) {
       console.error('Error al actualizar el usuario:', error);
@@ -77,8 +86,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <AvatarButton userUpdateImage={userImage} />
-      <div className="contenedor">
+      <div className="userform-contenedor">
         <h2 className="encabezado-titulo">Perfil de Usuario</h2>
 
         <form className="general" onSubmit={handleUpdateUser} key={userImage}>
@@ -100,15 +108,7 @@ const UserProfile = () => {
               onChange={handleInputChange}
             />
           </label>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={dataUser?.email || ''}
-              onChange={handleInputChange}
-            />
-          </label>
+
           <label>
             Biografía
             <textarea
@@ -120,7 +120,7 @@ const UserProfile = () => {
           <div className="image-container">
             <img
               className="user-avatar-image"
-              key={imageKey} // Atributo key actualizado con el estado imageKey
+              key={imageKey}
               src={imagenUsuario}
               alt="user-photo"
             />
@@ -136,12 +136,7 @@ const UserProfile = () => {
               }}
             />
           </label>
-          {/* <div>
-            IMAGEN USUARIO
-            {imagenUsuario ? (
-              <img className="userimage" src={imagenUsuario} alt="Avatar" />
-            ) : null}
-          </div> */}
+
           <button className="updateuser-button" type="submit">
             Guardar
           </button>

@@ -1,22 +1,19 @@
 import Scorer from './Scorer';
 import './NewsCard.css';
-import {
-  BACKEND_URL,
-  NEWS_CATEGORIES,
-  DEFAULT_USER_AVATAR,
-  DEFAULT_IMAGE_NEWS,
-} from '../config';
+import { BACKEND_URL, NEWS_CATEGORIES, DEFAULT_USER_AVATAR } from '../config';
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
-//import UserProfile from '../context/UserProfile';
+/* import { ImageContext } from '../context/ImageContext';
+import { useContext } from 'react'; */
 // import ScorerFake from './ScorerFake';
 
 // DISEÑO DE NOTICIA
 
-function NewsCard({ noticia, setReloadNews, userUpdateImage }) {
+function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
+  //const { userUpdateImage } = useContext(ImageContext);
 
   const handleDelete = () => {
     Swal.fire({
@@ -52,20 +49,16 @@ function NewsCard({ noticia, setReloadNews, userUpdateImage }) {
   // _______________________________________________
   // FOTO AVATAR USUARIO EN PUBLICACIÓN NOTICIA:
   // 1º Obtenemos la URL de la imagen del avatar del usuario de la noticia
-  let userAvatar = userUpdateImage;
+  //let avatarPhoto = userUpdateImage;
+  let userAvatar = noticia.userImageUrl;
   // Verificamos si la URL existe y no comienza con 'https'
   if (userAvatar && !userAvatar.startsWith('https')) {
     // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
-    userAvatar = `${BACKEND_URL}/${userUpdateImage}`;
+    userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
     // Si no hay URL de imagen de usuario en la noticia
   } else if (!userAvatar) {
-    // Se construye una URL de avatar por defecto utilizando el BACKEND_URL y el ID de usuario de la noticia
-    userAvatar = `${BACKEND_URL}/avatar/${userUpdateImage}`;
-    // Verificamos si la URL del avatar por defecto tampoco comienza con 'https'
-    if (!userAvatar.startsWith('https')) {
-      // Asignamos la imagen de avatar por defecto = DEFAULT_USER_AVATAR
-      userAvatar = DEFAULT_USER_AVATAR;
-    }
+    // Asignamos la imagen de avatar por defecto = DEFAULT_USER_AVATAR
+    userAvatar = DEFAULT_USER_AVATAR;
   }
 
   // _______________________________________________
@@ -75,14 +68,6 @@ function NewsCard({ noticia, setReloadNews, userUpdateImage }) {
   if (imagenNoticia && !imagenNoticia.startsWith('https')) {
     // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
     imagenNoticia = `${BACKEND_URL}/${noticia.imagenUrl}`;
-  } else if (!imagenNoticia) {
-    // Obtener la imagen de la noticia del backend si la URL local es nula
-    imagenNoticia = `${BACKEND_URL}/noticia/${noticia.id}`;
-  }
-  // Verificamos si la imagen de la noticia es la imagen por defecto
-  if (imagenNoticia === `${BACKEND_URL}/noticia/${noticia.id}`) {
-    // Asignamos la imagen por defecto
-    imagenNoticia = DEFAULT_IMAGE_NEWS;
   }
 
   return (

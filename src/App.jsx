@@ -18,7 +18,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
-      <Route path="userinfo" element={<UserProfile key={Date.now()} />} />
+      <Route path="userinfo" element={<UserProfile />} />
       <Route path="usernews" element={<UserNews />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
