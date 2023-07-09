@@ -43,8 +43,6 @@ function EditNews({ noticia, show, setShow }) {
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Cerrar',
       });
-    } finally {
-      // setForm(false);
     }
   };
 

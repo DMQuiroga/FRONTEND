@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthHttpCall from '../../hooks/useAuthHttpCall';
 import Swal from 'sweetalert2';
-// import { useHistory } from "react-router";
-// import { BACKEND_URL } from '../../config';
 
 // CREAR NOTICIA
 
@@ -12,7 +10,6 @@ function CreateNews({ show, setShow }) {
   const [, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  // const history = useHistory();
 
   const [title, setTitle] = useState('');
   const [introText, setIntrotext] = useState('');
@@ -40,10 +37,6 @@ function CreateNews({ show, setShow }) {
       setLoading(false);
       setShow(!show);
       navigate(0);
-      // if (res.ok) {
-      //   const body = await res.json();
-      //   history.push(`/app/experience/${body.id}`);
-      // }
     } catch (error) {
       Swal.fire({
         title: 'HB News',
@@ -52,8 +45,6 @@ function CreateNews({ show, setShow }) {
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Cerrar',
       });
-    } finally {
-      // setForm(false);
     }
   };
 

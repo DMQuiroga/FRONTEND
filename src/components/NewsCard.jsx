@@ -6,8 +6,6 @@ import { useUser } from '../context/UserContext';
 import EditNewsButton from '../components/EditNewsButton';
 import { useDark } from '../context/DarkContext';
 import Swal from 'sweetalert2';
-/* import { ImageContext } from '../context/ImageContext';
-import { useContext } from 'react'; */
 // import ScorerFake from './ScorerFake';
 
 // DISEÑO DE NOTICIA
