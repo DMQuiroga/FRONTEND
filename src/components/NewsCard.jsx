@@ -15,11 +15,7 @@ import { useContext } from 'react'; */
 function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
-<<<<<<< HEAD
-  //const { userUpdateImage } = useContext(ImageContext);
-=======
   const [dark] = useDark();
->>>>>>> 60b4a30d9518bee6a4d14cb3f6f042c77950a57a
 
   const handleDelete = () => {
     Swal.fire({
