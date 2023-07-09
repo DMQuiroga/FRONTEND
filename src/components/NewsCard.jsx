@@ -9,11 +9,12 @@ import {
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
+//import UserProfile from '../context/UserProfile';
 // import ScorerFake from './ScorerFake';
 
 // DISEÑO DE NOTICIA
 
-function NewsCard({ noticia, setReloadNews }) {
+function NewsCard({ noticia, setReloadNews, userUpdateImage }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
 
@@ -51,15 +52,15 @@ function NewsCard({ noticia, setReloadNews }) {
   // _______________________________________________
   // FOTO AVATAR USUARIO EN PUBLICACIÓN NOTICIA:
   // 1º Obtenemos la URL de la imagen del avatar del usuario de la noticia
-  let userAvatar = noticia.userImageUrl;
+  let userAvatar = userUpdateImage;
   // Verificamos si la URL existe y no comienza con 'https'
   if (userAvatar && !userAvatar.startsWith('https')) {
     // Si no comienza con 'https', agregamos la imagen de nuestro Backend de archivo uploads
-    userAvatar = `${BACKEND_URL}/${noticia.userImageUrl}`;
+    userAvatar = `${BACKEND_URL}/${userUpdateImage}`;
     // Si no hay URL de imagen de usuario en la noticia
   } else if (!userAvatar) {
     // Se construye una URL de avatar por defecto utilizando el BACKEND_URL y el ID de usuario de la noticia
-    userAvatar = `${BACKEND_URL}/avatar/${noticia.userId}`;
+    userAvatar = `${BACKEND_URL}/avatar/${userUpdateImage}`;
     // Verificamos si la URL del avatar por defecto tampoco comienza con 'https'
     if (!userAvatar.startsWith('https')) {
       // Asignamos la imagen de avatar por defecto = DEFAULT_USER_AVATAR

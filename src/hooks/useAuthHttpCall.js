@@ -47,6 +47,7 @@ function useAuthHttpCall() {
   // PETICION PUT
   const put = async (url, body, user) => {
     const isFormData = body instanceof FormData;
+    console.log(body);
 
     const headers = {};
     if (user) headers.Authorization = `${user.token}`;
@@ -62,6 +63,7 @@ function useAuthHttpCall() {
     if (!res.ok) {
       throw new Error(res.status + ' ' + responseBody.error);
     }
+    console.log(responseBody);
     return responseBody;
   };
 

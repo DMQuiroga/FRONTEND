@@ -5,8 +5,9 @@ import Footer from './Footer';
 import Toggle from './toggle';
 import AvatarButton from '../pages/user/AvatarButton';
 import AddNewsButton from './addNewsButton/AddNewsButton';
+import UserProfile from '../pages/user/UserProfile';
 
-function Index() {
+function Index({ userUpdateImage }) {
   const navigate = useNavigate();
   const handleLinkClick = () => {
     navigate('/');
@@ -20,7 +21,7 @@ function Index() {
             <h1>HB NEWS</h1>
           </Link>
 
-          <AvatarButton />
+          <AvatarButton userUpdateImage={userUpdateImage} />
 
           <span className="toggle-button">
             <Toggle />
