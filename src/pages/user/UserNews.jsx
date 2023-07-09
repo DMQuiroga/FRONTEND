@@ -1,6 +1,4 @@
-//import { useEffect } from 'react';
 import NewsCard from '../../components/NewsCard';
-import { useUser } from '../../context/UserContext';
 import { UserIDNews } from '../../hooks/newsApi';
 
 function UserNews() {

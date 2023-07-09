@@ -5,16 +5,19 @@ import './addNewsButton.css';
 import { useDark } from '../../context/DarkContext';
 function AddNewsButton() {
   const [show, setShow] = useState(true);
-  //   const [form, setForm] = useState(false);
   const newsCreate = useRef(null);
   const [dark] = useDark();
-  const closeNewsMenu = (e) => {
-    if (newsCreate.current.contains(e.target)) {
-      return;
-    } else setShow(!show);
-  };
+  const closeNewsMenu =
+    ((e) => {
+      if (newsCreate.current && newsCreate.current.contains(e.target)) {
+        return;
+      } else {
+        setShow(!show);
+      }
+    },
+    [show]);
   useEffect(() => {
-    if (newsCreate) {
+    if (newsCreate.current) {
       document.addEventListener('mousedown', closeNewsMenu);
     } else {
       document.removeEventListener('mousedown', closeNewsMenu);
@@ -23,11 +26,10 @@ function AddNewsButton() {
     return () => {
       document.removeEventListener('mousedown', closeNewsMenu);
     };
-  }, [show]);
+  }, [closeNewsMenu]);
 
   const handleAddNewsButton = () => {
     setShow(!show);
-    // setForm(!form);
   };
 
   return (

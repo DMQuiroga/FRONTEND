@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-// import { useUser } from '../../context/UserContext';
 import { useDark } from '../context/DarkContext';
-import { useNews } from '../hooks/newsApi';
 import EditNews from './EditNews';
 
 function EditNewsButton(noticia) {
-  const { news } = useNews;
   const [show, setShow] = useState(true);
   const newsEdit = useRef(null);
   const [dark] = useDark(); // const [user] = useUser();
@@ -28,7 +25,6 @@ function EditNewsButton(noticia) {
 
   const handleEditNewsButton = () => {
     setShow(!show);
-    // setForm(!form);
   };
   return (
     <section id="editbtncontainer" className={`editbtncontainer ${dark}`}>
