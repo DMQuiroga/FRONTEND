@@ -3,6 +3,8 @@ import './NewsCard.css';
 import { BACKEND_URL, NEWS_CATEGORIES, DEFAULT_USER_AVATAR } from '../config';
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
+import EditNewsButton from '../components/EditNewsButton';
+import { useDark } from '../context/DarkContext';
 import Swal from 'sweetalert2';
 /* import { ImageContext } from '../context/ImageContext';
 import { useContext } from 'react'; */
@@ -13,7 +15,11 @@ import { useContext } from 'react'; */
 function NewsCard({ noticia, setReloadNews }) {
   const { deleteNews } = useAuthentication();
   const [user] = useUser();
+<<<<<<< HEAD
   //const { userUpdateImage } = useContext(ImageContext);
+=======
+  const [dark] = useDark();
+>>>>>>> 60b4a30d9518bee6a4d14cb3f6f042c77950a57a
 
   const handleDelete = () => {
     Swal.fire({
@@ -128,9 +134,8 @@ function NewsCard({ noticia, setReloadNews }) {
               {' '}
               Borrar{' '}
             </button>
-            <button className="animated" onClick={handleDelete}>
-              {' '}
-              Editar{' '}
+            <button className={`animated voter editter ${dark}`}>
+              <EditNewsButton noticia={noticia} />
             </button>
           </>
         ) : null}
