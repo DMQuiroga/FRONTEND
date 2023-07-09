@@ -114,3 +114,90 @@ button.animated:active {
     transform: translate(0);
   }
 }
+
+header.header.masuno.day {
+  background-color: rgb(255, 101, 12);
+}
+
+header h1.day {
+  text-shadow: 0 0 3px rgb(245, 169, 4), 0 0 3px rgb(253, 228, 4);
+}
+
+.category-menu.day {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.animated.day {
+  background-color: rgb(255, 101, 12);
+  border-radius: 5px;
+}
+
+.titulonoticias.day {
+  text-shadow: 0px 0px 3px rgb(161, 161, 160), 0 0 3px rgb(253, 228, 4);
+  color: rgb(94, 93, 93);
+}
+
+.newscard.day {
+  border-color: whitesmoke;
+  box-shadow: 0 0 3px 3px whitesmoke;
+  border-radius: 2px;
+}
+
+.userimage.plusone.day {
+  border-color: rgb(255, 101, 12);
+}
+
+.username.day {
+  color: rgb(255, 101, 12);
+}
+
+.metadata.day {
+  color: rgb(255, 94, 0);
+}
+
+.content-footer.day {
+  background-color: rgb(255, 101, 12);
+}
+
+button.animated.day {
+  cursor: pointer;
+  background-color: #c97807;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white;
+
+  -webkit-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+  box-shadow: 0px 10px 25px -13px rgba(0, 0, 0, 1);
+
+  border-radius: 0px 0px 124px 0px;
+  -moz-border-radius: 0px 0px 124px 0px;
+  -webkit-border-radius: 0px 0px 124px 0px;
+  border: 0px solid #000000;
+}
+
+button.animated:hover.day {
+  background-color: rgb(209, 149, 19);
+  animation: vibrateAnimation 0.5s ease 0s 1 normal forwards;
+}
+
+button.animated:active.day {
+  background-color: rgb(95, 53, 19);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* .animated.voter.editter {
+  width: 50px;
+  color: white;
+  text-align: center;
+  position: relative;
+} */
+/* #editbtncontainer {
+  position: absolute;
+  top: 40px;
+} */
