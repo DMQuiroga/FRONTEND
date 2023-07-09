@@ -1,11 +1,6 @@
 import Scorer from './Scorer';
 import './NewsCard.css';
-import {
-  BACKEND_URL,
-  NEWS_CATEGORIES,
-  DEFAULT_USER_AVATAR,
-  DEFAULT_IMAGE_NEWS,
-} from '../config';
+import { BACKEND_URL, NEWS_CATEGORIES, DEFAULT_USER_AVATAR } from '../config';
 import { useAuthentication } from '../hooks/authApi';
 import { useUser } from '../context/UserContext';
 import Swal from 'sweetalert2';
